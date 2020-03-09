@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_08_152021) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +65,11 @@ ActiveRecord::Schema.define(version: 2020_03_08_152021) do
     t.string "region", null: false
     t.string "condition", null: false
     t.string "shipping", null: false
+    t.integer "size_id"
+    t.integer "category_id", null: false
+    t.integer "user_id", null: false
+    t.integer "buyer_id"
+    t.integer "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
