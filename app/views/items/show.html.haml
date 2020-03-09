@@ -1,0 +1,195 @@
+%html
+  %body
+    .pcHeader
+      .pcHeader__headerInner
+        .pcHeader__headerInner__mainHeader
+          %h1.pcHeader__headerInner__mainHeader__icon
+            = image_tag src="logo.png",size:"140x41"
+          .pcHeader__headerInner__mainHeader__searchBox
+            = form_with method:"#",local: true do |f|
+              %input{class:"searchBox--input",name:"key",placeholder:"キーワードから探す"}
+              %button{type:"submit"}
+                .icon
+                  = image_tag src="icon-search 1.png",size:"19.14x19.14"
+        .pcHeader__headerInner__nav
+          %ul.pcHeader__headerInner__nav__listsLeft
+            %li.pcHeader__headerInner__nav__listsLeft__item--first
+              カテゴリー
+            .pcHeader__headerInner__nav__listsLeft__treedisplayNone
+              %ul.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree
+                %li.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree__item
+            %li.pcHeader__headerInner__nav__listsLeft__item
+              ブランド
+              .brandsPulldowndisplayNone
+          %ul.pcHeader__headerInner__nav__listsRight
+            %li.pcHeader__headerInner__nav__listsRight__login
+              ログイン
+            %li.pcHeader__headerInner__nav__listsRight__new
+              新規会員登録
+    .breadCrumbs
+      %ul
+        %li
+          =link_to"Furima",href:"#"
+        %li
+          = icon('fa','angle-right')
+        %li
+          =link_to"レディース",href:"#"
+        %li
+          = icon('fa','angle-right')
+        %li
+          =link_to"トップス",href:"#"
+        %li
+          = icon('fa','angle-right')
+        %li
+          =link_to"Tシャツ/カットソー(半袖/袖なし)",href:"#"
+        %li
+          = icon('fa','angle-right')
+        %li
+          product1
+    .main
+      .main__showMain
+        .main__showMain__contentLeftqq
+        .main__showMain__contentRight
+          .main__showMain__contentRight__top-content
+            .main__showMain__contentRight__top-content__itemBox
+              .main__showMain__contentRight__top-content__itemBox__name
+                unti
+              .main__showMain__contentRight__top-content__itemBox__body
+                %ul
+                  %li
+                    =image_tag src="icon-01.png"
+                    %ul
+                      %li
+                        =image_tag src="icon-02.png"
+                      %li
+                        =image_tag src="icon-03.png"
+                      %li
+                        =image_tag src="icon-04.png"
+              .main__showMain__contentRight__top-content__itemBox__price
+                %span
+                  20000
+                .main__showMain__contentRight__top-content__itemBox__price__price-Detail
+                  %span
+                    (税込)
+                  %span
+                    (送料込み)
+              .main__showMain__contentRight__top-content__itemBox__table
+                %table
+                  %tbody
+                    %tr
+                      %th 出品者
+                      %td 雨音はよく寝れる
+                    %tr 
+                      %th カテゴリー
+                      %td
+                        =link_to"レディース",href:"#"
+                        %br
+                        =link_to"トップス",href:"#"
+                        %br
+                        =link_to"Tシャツ/カットソー(半袖/袖なし)",href:"#"
+                    %tr
+                      %th ブランド
+                      %td
+                    %tr
+                      %th 商品のサイズ
+                      %td
+                    %tr 
+                      %th 商品の状態
+                      %td 新品/未使用
+                    %tr
+                      %th 配送料の負担
+                      %td 着払い(購入者負担)
+                    %tr
+                      %th 配送元の地域
+                      %td 千葉県野田市光葉町
+                    %tr
+                      %th 発送日の目安
+                      %td そのうち
+              %a{class:"item-buy-btn",href:"#"}購入画面に進む
+              .main__showMain__contentRight__top-content__itemBox__item-Detail
+                最近口内炎ができてめちゃ痛いです。
+              .main__showMain__contentRight__top-content__itemBox__optionalArea
+                %ul
+                  %li.optionalBtnlikeBtn
+                    お気に入り
+                %ul.main__showMain__contentRight__top-content__itemBox__optionalArea__optional
+                  %li.main__showMain__contentRight__top-content__itemBox__optionalArea__optional__optionalBtn
+                    =link_to"不適切な商品の通報",href:"#"
+            .main__showMain__contentRight__top-content__commentBox
+              %ul.main__showMain__contentRight__top-content__commentBox__commentContents
+                = form_with class:"new_comment",method:"#",local: true do |f|
+                  %textarea{required:"required", placeholder: "コメントする", rows: "2"}
+                %p.main__showMain__contentRight__top-content__commentBox__noticeMsg
+                  相手のことを考え丁寧なコメントを心がけよう。
+                  %br
+                  不快な言葉使いなどは利用制限や退会処分となることがあります。
+                %button{type:"submit",class:"comment"}
+                  コメントする
+                  
+          %ul.main__showMain__contentRight__links
+            %li
+              %a{href:'#'}
+                = icon('fa','angle-left')
+                %span
+                  前の商品
+            %l.last-child
+              %a{href:'#'}
+                %span 
+                  後ろの商品
+                = icon('fa','angle-right')
+          .main__showMain__contentRight__relatedItems
+            %a{ href: '#'}
+              メンズをもっとみる
+    .appBanner
+      .appBanner__inner
+        %h2.appBanner__inner__title
+          誰でも簡単、人生を変えるフリマアプリ
+        %p.appBanner__inner__text
+          今すぐ無料ダウンロード
+        .appBanner__inner__icon
+    .footer
+      %ul.footer__contents
+        %li.footer__contents__content
+          %h2.footer__contents__content__head
+            FURIMAについて
+          %ul
+            %li
+              =link_to"会社概要","#"
+            %li
+              =link_to"プライバシーポリシー","#"
+            %li
+              =link_to"FURIMA利用規約","#"
+            %li
+              =link_to"ポイントに関する特約","#"
+        %li.footer__contents__content
+          %h2.footer__contents__content__head
+            FURIMAをみる
+          %ul
+            %li
+              =link_to"カテゴリー一覧","#"
+            %li
+              =link_to"ブランド一覧","#"
+        %li.footer__contents__content
+          %h2.footer__contents__content__head
+            ヘルプ&ガイド
+          %ul
+            %li
+              =link_to"FURIMAガイド","#"
+            %li
+              =link_to"FURIMAロゴ利用ガイドライン","#"
+            %li
+              =link_to"お知らせ","#"
+      .footer__logo
+        %a
+          = image_tag src="logo-white.png",size:"160x46.34"
+        %p
+          FURIMA
+    %a
+      .purchasesBtn
+        %span.purchasesBtn__text
+          出品する
+        %span.purchasesBtn__icon
+          %a
+            = image_tag src="icon_camera.png",size:"54x54"
+
+
