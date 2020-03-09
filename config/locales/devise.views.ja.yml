@@ -5,8 +5,8 @@ ja:
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
-        password_confirmation: "確認用パスワード"
-        remember_me: "ログインを記憶"
+        password_confirmation: "確認のため再度パスワード入力"
+        remember_me: "ログインを記憶させる場合はチェック"
     models:
       user: "ユーザ"
   devise:
