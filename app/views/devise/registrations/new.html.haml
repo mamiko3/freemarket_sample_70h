@@ -1,0 +1,96 @@
+#header
+  #{image_tag 'logo.png'}
+%h2 新規会員登録
+
+.contents
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    / ↓これを追加↓
+    .field
+      = f.label :"ニックネーム"
+      %br/
+      = f.text_field :nickname, autofocus: true, placeholder: "例）フリマ100%"
+    .field
+      = f.label :"プロフィール画像"
+      %br/
+      = f.text_field :image, placeholder: "使いたい画像のURLを記載してください"
+    / ↑ここまで↑
+    .field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "pc・携帯どちらも可"
+    .field
+      = f.label :password
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      %br/
+      = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の英数字 半角入力"
+    .field
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    %p -------------------------------------------------------------
+    %p
+      ご本人様確認のため、下記項目について登録をお願いいたします。
+      %br/
+    .field
+      = f.label :"名前（姓）"
+      %span.form-require 必須
+      %span.form-require2 全角
+      %br/
+      = f.text_field :last_name, autofocus: true, placeholder: "例）山田"
+      %br/
+    .field
+      = f.label :"名前（名）"
+      %span.form-require 必須
+      %span.form-require2 全角
+      %br/
+      = f.text_field :first_name, autofocus: true, placeholder: "例）三郎"
+      %br/
+    .field
+      = f.label :"ふりがな（姓）"
+      %span.form-require 必須
+      %span.form-require2 全角
+      %br/
+      = f.text_field :last_name_kana, autofocus: true, placeholder: "例）やまだ"
+      %br/
+    .field
+      = f.label :"ふりがな（名）"
+      %span.form-require 必須
+      %span.form-require2 全角
+      %br/
+      = f.text_field :first_name_kana, autofocus: true, placeholder: "例）さぶろう"
+      %br/
+    .field
+      = f.label :"電話番号"
+      %span.form-require 必須
+      %span.form-require3 半角
+      %br/
+      = f.text_field :phone_number, placeholder: "例）12-3456-7890"
+      %br/
+    .field
+      = f.label :"誕生年"
+      %span.form-require 必須
+      %span.form-require3 半角
+      %br/
+      = f.text_field :year_birth_at, autofocus: true, placeholder: "例）2020"
+      %br/
+    .field
+      = f.label :"誕生月"
+      %span.form-require 必須
+      %span.form-require3 半角
+      %br/
+      = f.text_field :month_birth_at, autofocus: true, placeholder: "例）08"
+      %br/
+    .field
+      = f.label :"誕生日"
+      %span.form-require 必須
+      %span.form-require3 半角
+      %br/
+      = f.text_field :day_birth_at, autofocus: true, placeholder: "例）13"
+      %br/
+    .actions
+      = f.submit "Sign up"
+
+-# = render "devise/shared/links"
