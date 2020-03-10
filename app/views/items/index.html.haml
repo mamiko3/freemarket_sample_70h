@@ -1,9 +1,22 @@
+- if user_signed_in?
+  -# = link_to "新規投稿", new_post_path, class: "header__right--btn"
+  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
+- else
+  = link_to "ログイン", new_user_session_path, class: "header__right--btn"
+  = link_to "新規登録", new_user_registration_path, class: "header__right--btn"
+
+
+
+-# = link_to "ログイン", new_user_session_path, method: :get
+-# = link_to "ログアウト", destroy_user_session_path, method: :delete
+
 .main
   %section.mainVisual
     .content
       %h2.content__subtitle 人生を変えるフリマアプリ
       %p.content__text FURIMAはだれでもかんたんに出品・購入できる
       %p.content__text フリマアプリです
+
       .btn
         = link_to '#', class: "productLink" do
           .btn__aBtn

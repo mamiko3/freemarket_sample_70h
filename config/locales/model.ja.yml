@@ -1,0 +1,47 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      address: 住所
+    attributes:
+      user:
+        Nickname: ニックネーム
+        First_name: 名前（名）
+        Last_name: 名前（姓）
+        First_name_kana: ふりがな（名）
+        Last_name_kana: ふりがな（姓）
+        Phone_number: 電話番号
+        Year_birth_at: 誕生年
+        Month_birth_at: 誕生月
+        Day_birth_at: 誕生日        
+      address:
+        title: タイトル
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+
+
+
+
+
+
+
+
+
+
+
+
+ja:
+  errors:
+    messages:
+      restrict_dependent_destroy:
+        many: "%{record}が存在しているので登録できません"
+        
+  view:
+    edit: "編集"
+    delete: "削除"
+    back: "戻る"
+
