@@ -3,12 +3,14 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.new
   end
 
   def new
   end
 
   def create
+
   end
 
   def edit

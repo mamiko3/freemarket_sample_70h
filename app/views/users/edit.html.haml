@@ -1,0 +1,169 @@
+.edit
+  .edit__content
+    .edit__content__header
+      .edit__content__header__text
+        = image_tag src="logo.png", size:'200x70'
+    .edit__content__main
+      .edit__content__main__childrens
+      %form
+        .edit__content__main__childrens__imges
+          %h1 商品の編集
+        
+          .edit__content__main__childrens__imges__box
+            %ul
+              %li
+                %h3 出品画像
+              %li
+            %strong 必須
+            %br/
+            最大１０枚まで追加可能
+      
+        .new__content__main__childrens__items
+          .new__content__main__childrens__items__box
+            .new__content__main__childrens__items__box__box1
+              %p.item__text
+              商品名 
+              %span
+                必須
+              %br/
+              %input#item{name:  "item", placeholder: "40文字まで", type: "text",class:"item"}/
+              %br/
+              %br/
+            .new__content__main__childrens__items__box__box2
+              %p.item__text
+                商品の説明
+                %span
+                  必須
+              %textarea{class:"textarea",placeholder:"説明を入力してください"}
+        .new__content__main__childrens__categories
+          .new__content__main__childrens__categories__box
+            .new__content__main__childrens__categories__box__box1
+              商品の詳細
+            .new__content__main__childrens__categories__box__box2
+              カテゴリー 必須
+              %br/
+              %select#categorie{name: "categories",class:"categorie"}        
+                %option{value:  "categorie1"} レーディス
+                %option{value: "categorie2"} メンズ
+                %option{value: "categorie3"} 日用品
+                %option{value: "categorie4"} インテリア
+                %option{value: "categorie5"} その他
+              %br/
+
+              %select#categorie{name: "categories_1",class:"categorie_1"}        
+                %option{value: "categorie_11"} トップス
+                %option{value: "categorie_22"} ジャケットアウター
+                %option{value: "categorie_33"} パンツ
+                %option{value: "categorie_44"} スカート
+                %option{value: "categorie_55"} ワンピース
+              %br/
+
+              %select#categorie_2{name:  "categories_2",class:"categorie_2"}        
+                %option{value: "categorie_11"} tシャツ
+                %option{value: "categorie_22"} ブラウス
+                %option{value: "categorie_33"} キャミソール
+                %option{value: "categorie_44"} タンクトップ
+                %option{value:"categorie_55"} その他
+              %br/
+            .new__content__main__childrens__categories__box__box3
+              ブランド
+              %br/
+              %input#brnd{name: "brnd", placeholder:"", type: "text",class:"brnd"}/
+            .new__content__main__childrens__categories__box__box4
+              商品の状態 必須
+              %br/
+              %select#condition{name: "condition",class:"condition"}        
+                %option{value:"condition1"} 新品、未使用
+                %option{value: "condition2"} 未使用に近い
+                %option{value: "condition3"} 目立った傷や汚れがあり
+                %option{value: "condition4"} やや傷や汚れがあり
+                %option{value: "condition5"} その他
+
+
+        .new__content__main__childrens__deliverys
+          .new__content__main__childrens__deliverys__box
+            .new__content__main__childrens__deliverys__box__box1
+              配送について
+            .new__content__main__childrens__deliverys__box__box2
+              配送料の負担 必須
+              %br/
+              %select#contribution{name: "contribution",class:"contribution"}        
+                %option{value: "contribution1"} 選択してください
+                %option{value: "contribution2"} 送料込み
+                %option{value: "contribution3"} 着払い
+               
+            .new__content__main__childrens__deliverys__box__box5
+              発送までの日数 必須
+              %select#date{name: "date",class:"date"}        
+                %option{value: "condition1"} 未定
+                %option{value: "condition2"} ラクラクフリマ便
+                %option{value: "condition3"} ゆうメール
+                %option{value: "condition4"} レターパック
+            .new__content__main__childrens__deliverys__box__box3
+              配送の方法
+              %br/
+              %select#delivery{name: "delivery",class:"delivery"}        
+                %option{value: "delivery1"} 北海道
+                %option{value: "delivery2"} 神奈川
+                %option{value:"delivery3"} 東京
+                %option{value: "delivery4"} 福岡
+            .new__content__main__childrens__deliverys__box__box4
+              配送の地域 必須
+              %br/
+              %select#area{name: "area",class:"area"}        
+                %option{value: "condition1"} 選択してください
+                %option{value: "condition2"} 1~2日で発送
+                %option{value: "condition3"} ２~３日で発送
+                %option{value:  "condition4"} ４~７日で発送
+                %option{value: "condition5"} その他
+            
+        .new__content__main__childrens__sale
+          .new__content__main__childrens__sale__box
+            価格 (¥300~9,999,999)
+            .new__content__main__childrens__sale__box__box1
+              .flex
+                %p.left
+                  販売価格 必須
+                %p.rigth
+                  ¥
+                
+              %input#price{name: "price", placeholder: "", type: "number",class:"price"}/
+              
+            .new__content__main__childrens__sale__box__box2
+              %p.left
+                販売手数料 (10%)
+              %p.rigth
+                ー
+            .new__content__main__childrens__sale__box__box3
+              .new__content__main__childrens__sale__box__box3__top
+                %p.left
+                  販売利益
+                %p.rigth
+                  ー
+              .new__content__main__childrens__sale__box__box3__middle
+                .new__content__main__childrens__sale__box__box3__middle__buttn1
+                  %button{name: "delete", type: "button",class:"submit"} 商品削除
+                .new__content__main__childrens__sale__box__box3__middle__buttn2 
+                  = link_to("変更完了","#" ,class: "back") 
+              .new__content__main__childrens__sale__box__box3__bottom
+                %p
+                  禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+
+
+    .new__content__footer
+      .new__content__footer__list
+        %ul
+          %li
+            プライバシーポリシー
+          %li
+            メルカリ利用規約
+          %li
+            特定商取引に関する表記
+
+      .new__content__footer__image
+        .new__content__footer__image__box
+          = image_tag src="logo.png", size:'120x40' 
+      .new__content__footer__text
+        .new__content__footer__text__box
+          @Fulima,inc.
