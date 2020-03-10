@@ -8,7 +8,7 @@
       %form
         .edit__content__main__childrens__imges
           %h1 商品の編集
-        
+        = form_with(model: @item, local: true) do|f|
           .edit__content__main__childrens__imges__box
             %ul
               %li
@@ -17,7 +17,28 @@
             %strong 必須
             %br/
             最大１０枚まで追加可能
-      
+          = f.fields_for :item_images  do |image|
+            .edit__content__main__childrens__imges__box__dropzone
+            #preview
+
+            .edit__content__main__childrens__imges__box__input
+              =image.label :image, for: "upload-image" do
+                .item__img__dropzone__input__input-area
+                  = image.file_field :image_url, id:"upload-image", class: "upload-image"
+                .item__img__dropzone__input__description
+                  .item__img__dropzone__input__description__text
+                    クリックしてファイルをアップロード
+            .edit__content__main__childrens__imges__box__dropzone
+              #preview2
+
+              .edit__content__main__childrens__imges__box__input2
+                = image.label :image, for: "upload-image" do
+                  .edit__content__main__childrens__imges__box__input2__inputarea
+                    =image.file_field :image_url, id: "upload-image", class: "upload-image"
+                    .edit__content__main__childrens__imges__box__input2__inputarea__description
+                      .edit__content__main__childrens__imges__box__input2__inputarea__description__text
+                        クリックしてファイルをアップォード
+
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
             .new__content__main__childrens__items__box__box1
