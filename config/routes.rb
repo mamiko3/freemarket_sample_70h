@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
     devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
+      get 'addresses', to: 'users/registrations#new_address'
+      post 'addresses', to: 'users/registrations#create_address'
+      get '/users/sign_out' => 'devise/sessions#destroy'
+    end
+
   root to: 'items#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :items, only: :index
-end
+  end
+  
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
