@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :items
   validates :image, presence: true
+  mount_uploader :image, ImageUploader
 end
