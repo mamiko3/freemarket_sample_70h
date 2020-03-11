@@ -1,0 +1,30 @@
+.pcHeader
+  .pcHeader__headerInner
+    .pcHeader__headerInner__mainHeader
+      %h1.pcHeader__headerInner__mainHeader__icon
+        = image_tag src="logo.png",size:"140x41"
+      .pcHeader__headerInner__mainHeader__searchBox
+        = form_with method:"#",local: true do |f|
+          %input{class:"searchBox--input",name:"key",placeholder:"キーワードから探す"}
+          %button{type:"submit"}
+            .icon
+              = image_tag src="icon-search 1.png",size:"19.14x19.14"
+    .pcHeader__headerInner__nav
+      %ul.pcHeader__headerInner__nav__listsLeft
+        %li.pcHeader__headerInner__nav__listsLeft__item--first
+          カテゴリー
+        .pcHeader__headerInner__nav__listsLeft__treedisplayNone
+          %ul.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree
+            %li.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree__item
+        %li.pcHeader__headerInner__nav__listsLeft__item
+          ブランド
+          .brandsPulldowndisplayNone
+      %ul.pcHeader__headerInner__nav__listsRight
+      - if user_signed_in?
+        %li.pcHeader__headerInner__nav__listsRight__login
+          =link_to"ログアウト",destroy_user_session_path
+      - else
+        %li.pcHeader__headerInner__nav__listsRight__login
+          =link_to"ログイン",new_user_session_path
+        %li.pcHeader__headerInner__nav__listsRight__new
+          =link_to"新規登録",new_user_registration_path
