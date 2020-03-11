@@ -2,7 +2,7 @@
   .pcHeader__headerInner
     .pcHeader__headerInner__mainHeader
       %h1.pcHeader__headerInner__mainHeader__icon
-        = image_tag src="logo.png",size:"140x41"
+        = link_to image_tag(src="logo.png",size:"140x41"),root_path
       .pcHeader__headerInner__mainHeader__searchBox
         = form_with method:"#",local: true do |f|
           %input{class:"searchBox--input",name:"key",placeholder:"キーワードから探す"}
