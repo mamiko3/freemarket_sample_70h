@@ -6,15 +6,23 @@
         ここにロゴ
     .new__content__main
       .new__content__main__childrens
-      %form
+      = form_with(model: @item, local: true)do |form|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
             出品画像 
             %strong 必須
             %br/
             最大１０枚までアップロード可能
-            %input{type: "file" ,class:"abc",value:"textarea"}
-            画像がありません
+            = form.fields_for :images do |t|
+              = t.label :image,class:"icons" do
+                = icon( 'fas',"fas fa-camera", class: "icon")
+                %p.text
+                  ドラッグアンドドロップ
+                  %br/
+                  またはクリックしてファイルをアップロード
+                = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+              -# %label.label 
+                -# %i.fas.fa-camera 
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
             .new__content__main__childrens__items__box__box1
@@ -23,7 +31,8 @@
               %span
                 必須
               %br/
-              %input#item{name:  "item", placeholder: "40文字まで", type: "text",class:"item"}/
+              = form.text_field  :name, name:  "item", placeholder: "40文字まで", type: "text"
+                
               %br/
               %br/
               %p.item__text-color
@@ -33,7 +42,7 @@
                 商品の説明
                 %span
                   必須
-              %textarea{class:"textarea"}
+              = form.text_area :explain,class:"textarea"
               %br/
               %br/
               入力してください
@@ -74,7 +83,7 @@
             .new__content__main__childrens__categories__box__box3
               ブランド
               %br/
-              %input#brnd{name: "brnd", placeholder:"", type: "text",class:"brnd"}/
+              = form.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
             .new__content__main__childrens__categories__box__box4
               商品の状態 必須
               %br/
@@ -134,7 +143,7 @@
                   ¥
                 
               
-              %input#price{name: "price", placeholder: "", type: "number",class:"price"}/
+              =form.number_field :price,name: "price", placeholder: "", type: "number",class:"price"
               
             .new__content__main__childrens__sale__box__box2
               %p.left
@@ -149,7 +158,7 @@
                   ー
               .new__content__main__childrens__sale__box__box3__middle
                 .new__content__main__childrens__sale__box__box3__middle__buttn1
-                  %input#submit{name: "submit", type: "submit",class:"submit"}/
+                  =form.submit name: "submit", class:"submit", value: "送信"
                 .new__content__main__childrens__sale__box__box3__middle__buttn2 
                   = link_to("戻る","#" ,class: "back") 
               .new__content__main__childrens__sale__box__box3__bottom
