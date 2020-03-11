@@ -74,12 +74,18 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'haml-rails'
-gem 'jquery'
+gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'carrierwave'
 gem 'pry-rails'
 gem 'sprockets'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'payjp'
+gem 'dotenv-rails'
+gem 'dotenv', '~> 2.7', '>= 2.7.5'
+
 gem 'rails-i18n'
 gem 'fog-aws'
+
