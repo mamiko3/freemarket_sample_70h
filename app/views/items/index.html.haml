@@ -1,9 +1,16 @@
+
+= render'layouts/header'
+
+-# = link_to "ログイン", new_user_session_path, method: :get
+-# = link_to "ログアウト", destroy_user_session_path, method: :delete
+
 .main
   %section.mainVisual
     .content
       %h2.content__subtitle 人生を変えるフリマアプリ
       %p.content__text FURIMAはだれでもかんたんに出品・購入できる
       %p.content__text フリマアプリです
+
       .btn
         = link_to '#', class: "productLink" do
           .btn__aBtn
@@ -118,3 +125,4 @@
         .btn-b__aBtn
       = link_to '#', class: "productLink" do
         .btn-b__gBtn
+= render'layouts/footer'

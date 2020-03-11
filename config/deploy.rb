@@ -31,4 +31,12 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+
+# 設定した環境変数をcapistranoでの自動デプロイで利用するためには、明示的に環境変数を指定するための記述
+  set :default_env, {
+    rbenv_root: "/usr/local/rbenv",
+    path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+    AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+    AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+  }
 end

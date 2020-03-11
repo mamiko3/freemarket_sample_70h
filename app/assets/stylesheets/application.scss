@@ -1,5 +1,6 @@
 @import "items.show";
 @import "items.new";
+@import "items.index";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "index";
@@ -16,6 +17,10 @@ body {
   }
 }
 
+#error_explanation{
+  font-size: medium;
+}
+
 .contents {
   width: 700px;
   margin: 0 auto;
@@ -26,6 +31,10 @@ body {
 
 h2, #new_user.new_user {
   text-align: center;
+}
+
+ul{
+  list-style: none;
 }
 
 .field {
@@ -56,7 +65,7 @@ h2, #new_user.new_user {
   font-weight: 300;
   font-size: small;
   background-color: #ce3f37;
-  padding: 5px;
+  padding: 3px;
   color: #fff;
   float: right;
 }
@@ -65,7 +74,7 @@ h2, #new_user.new_user {
   font-weight: 300;
   font-size: small;
   background-color: lightpink;
-  padding: 5px;
+  padding: 3px;
   color: gray;
   float: right;
 }
@@ -74,7 +83,7 @@ h2, #new_user.new_user {
   font-weight: 300;
   font-size: small;
   background-color: sandybrown;
-  padding: 5px;
+  padding: 3px;
   color: gray;
   float: right;
 }
@@ -85,7 +94,8 @@ h2, #new_user.new_user {
   border: solid 1px;
   background-color: rgb(105, 200, 204);
   font-size: medium;
-  color: #000
+  color: #000;
+  margin: 0 auto;
 }
 
 .field_def {
@@ -98,3 +108,7 @@ a {
 
 }
 
+em{
+  padding-right: 100px;
+  font-size: small;
+}
