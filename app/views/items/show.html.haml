@@ -106,6 +106,8 @@
                       %th 発送日の目安
                       %td そのうち
               %a{class:"item-buy-btn",href:"#"}購入画面に進む
+            - if user_signed_in? && current_user.id
+              %a{class:"item-buy-btn",href:"#"}編集画面に進む
               .main__showMain__contentRight__top-content__itemBox__item-Detail
                 最近口内炎ができてめちゃ痛いです。
               .main__showMain__contentRight__top-content__itemBox__optionalArea
