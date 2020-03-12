@@ -15,6 +15,7 @@ CarrierWave.configure do |config|
       region: 'exitap-northeast-1'
     }
     config.fog_directory  = 'teamh70ki'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/teamh70ki'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/teamh70ki' #カリキュラム
+    # config.asset_host = 'https://teamh70ki.s3.amazonaws.com' #投稿した画像が表示されないとき
   end
 end

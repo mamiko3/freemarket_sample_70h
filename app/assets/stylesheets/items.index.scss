@@ -43,14 +43,14 @@ body {
     width: 180px;
     height: 50px;
     margin-right: 10px;
-    background-image: url(app-store.svg);
+    background-image: image-url('app-store.svg');
     background-size: cover;
   }
   &__gBtn {
     width: 180px;
     height: 50px;
     margin-right: 10px;
-    background-image: url(google-play.svg);
+    background-image: image-url('google-play.svg');
     background-size: cover;
   }
 }
@@ -137,7 +137,7 @@ body {
 
 
 .topMiddleDl {
-  background-image: url(bg-topMiddleDl-pict.jpg);
+  background-image: image-url('bg-topMiddleDl-pict.jpg');
   background-position: bottom right;
   height: 400px;
   background-size: cover;
@@ -265,7 +265,7 @@ body {
 
 
 .appBanner {
-  background-image: url(bg-appBanner-pict.jpg);
+  background-image: image-url('bg-appBanner-pict.jpg');
   padding: 100px 40px;
   position: relative;
   background-size: cover;
@@ -295,14 +295,14 @@ body {
     width: 180px;
     height: 50px;
     margin-right: 10px;
-    background-image: url(app-store.svg);
+    background-image: image-url('app-store.svg');
     background-size: cover;
   }
   &__gBtn {
     width: 180px;
     height: 50px;
     margin-right: 10px;
-    background-image: url(google-play.svg);
+    background-image: image-url('google-play.svg');
     background-size: cover;
   }
 }
