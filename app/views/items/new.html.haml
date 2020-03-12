@@ -89,12 +89,7 @@
               商品の状態 必須
               %br/
               = form.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
-              -# %select#condition{name: "condition",class:"condition"}        
-              -#   %option{value:"condition1"} 新品、未使用
-              -#   %option{value: "condition2"} 未使用に近い
-              -#   %option{value: "condition3"} 目立った傷や汚れがあり
-              -#   %option{value: "condition4"} やや傷や汚れがあり
-              -#   %option{value: "condition5"} その他
+              
 
 
         .new__content__main__childrens__deliverys
@@ -105,15 +100,6 @@
               配送料の負担 必須
               %br/
               = form.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
-              -# = form.select :region, options_for_select(@a.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "contribution"}
-              -# =form.select :postage, aa: "選択してください",class:"contribution"     
-              -# =form.select :region,pleaceholder: "",class:"categorie"  
-              -# =form.select :condition,pleaceholder: "",class:"categorie_1" 
-              -# =form.select :shipping,pleaceholder: "",class:"categorie_1"     
-              -# %option{value: "contribution1"} 選択してください
-              -# %option{value: "contribution2"} 送料込み
-              -# %option{value: "contribution3"} 着払い
-                  
             -# .new__content__main__childrens__deliverys__box__box5
             -#   発送までの日数 必須
             -#   = form.select(:shipping, [["未定", "未定"], ["ラクマフリマ便", "ラクマフリマ便"],["ゆうメール","ゆうメール"],["レターパック","レターパック"]], {prompt:"選択してください"}, {class: "date"})
@@ -127,22 +113,10 @@
               配送の日数
               %br/
               = form.select(:shipping, [["１〜２日で発送", "１〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
-              -# %select#delivery{name: "delivery",class:"delivery"}        
-              -#   %option{value: "delivery1"} 北海道
-              -#   %option{value: "delivery2"} 神奈川
-              -#   %option{value:"delivery3"} 東京
-              -#   %option{value: "delivery4"} 福岡
             .new__content__main__childrens__deliverys__box__box4
               配送の地域 必須
               %br/
-              = form.select :region, options_for_select(@a.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"}
-              -# = form.select(:region, [["神奈川", "神奈川"], ["東京", "東京"],["沖縄","沖縄"],["北海道","北海道"]], {prompt:"選択してください"}, {class: "area"})
-              -# %select#area{name: "area",class:"area"}        
-              -#   %option{value: "condition1"} 選択してください
-              -#   %option{value: "condition2"} 1~2日で発送
-              -#   %option{value: "condition3"} ２~３日で発送
-              -#   %option{value:  "condition4"} ４~７日で発送
-              -#   %option{value: "condition5"} その他
+              = form.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"}
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box

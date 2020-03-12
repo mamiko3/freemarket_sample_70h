@@ -83,18 +83,7 @@
         = link_to '#', class: "productLink" do 
           %h3.title 新規投稿商品
       .productLists
-        -# - @items.each do |item|
-        -#   - if item.buyer_id.blank?
-        -#     = link_to '#', class: "productLink" do
-        -#       .productList
-        -#         %figure.productList__img
-        -#           = image_tag "", alt: "写真", class: "show-img"
-        -#         .productList__body
-        -#           .details
-        -#             = item.name
-        -#           %p
-        -#             = "#{item.price}円"
-        -#           %p (税込)
+       
     
   %section.pickupContainer
     %h2.head ピックアップブランド
@@ -102,19 +91,7 @@
       .productHead
         = link_to '#', class: "productLink" do
           %h3.title アーカイバー
-      -# .productLists
-      -#   - @items.each do |item|
-      -#     - if item.buyer_id.blank?
-      -#       = link_to '#', class: "productLink" do
-      -#         .productList
-      -#           %figure.productList__img
-      -#             = image_tag "", alt: "写真", class: "show-img"
-      -#           .productList__body
-      -#             .details
-      -#               = item.name
-      -#             %p
-      -#               = "#{item.price}円"
-      -#             %p (税込)
+      
 
 .appBanner
   .inner
