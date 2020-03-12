@@ -6,15 +6,22 @@
         ここにロゴ
     .new__content__main
       .new__content__main__childrens
-      %form
+      = form_with(model: @item, local: true)do |form|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
             出品画像 
             %strong 必須
             %br/
             最大１０枚までアップロード可能
-            %input{type: "file" ,class:"abc",value:"textarea"}
-            画像がありません
+            = form.fields_for :images do |t|
+              = t.label :image,class:"icons" do
+                = icon( 'fas',"fas fa-camera", class: "icon")
+                %p.text
+                  ドラッグアンドドロップ
+                  %br/
+                  またはクリックしてファイルをアップロード
+                = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+             
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
             .new__content__main__childrens__items__box__box1
@@ -23,7 +30,8 @@
               %span
                 必須
               %br/
-              %input#item{name:  "item", placeholder: "40文字まで", type: "text",class:"item"}/
+              = form.text_field  :name,  placeholder: "40文字まで", type: "text"
+                
               %br/
               %br/
               %p.item__text-color
@@ -33,7 +41,7 @@
                 商品の説明
                 %span
                   必須
-              %textarea{class:"textarea"}
+              = form.text_area :explain,class:"textarea"
               %br/
               %br/
               入力してください
@@ -56,13 +64,15 @@
                 %option{value: "categorie5"} その他
               %br/
 
-              %select#categorie{name: "categories_1",class:"categorie_1"}        
-                %option{value: "categorie_11"} トップス
-                %option{value: "categorie_22"} ジャケットアウター
-                %option{value: "categorie_33"} パンツ
-                %option{value: "categorie_44"} スカート
-                %option{value: "categorie_55"} ワンピース
-              %br/
+              -# =form.select :region,pleaceholder: "",class:"categorie"  
+              -# =form.select :condition,pleaceholder: "",class:"categorie_1" 
+              -# =form.select :shipping,pleaceholder: "",class:"categorie_1" 
+              -# %option{value: "categorie_11"} トップス
+              -# %option{value: "categorie_22"} ジャケットアウター
+              -# %option{value: "categorie_33"} パンツ
+              -# %option{value: "categorie_44"} スカート
+              -# %option{value: "categorie_55"} ワンピース
+              -# %br/
 
               %select#categorie_2{name:  "categories_2",class:"categorie_2"}        
                 %option{value: "categorie_11"} tシャツ
@@ -74,16 +84,17 @@
             .new__content__main__childrens__categories__box__box3
               ブランド
               %br/
-              %input#brnd{name: "brnd", placeholder:"", type: "text",class:"brnd"}/
+              = form.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
             .new__content__main__childrens__categories__box__box4
               商品の状態 必須
               %br/
-              %select#condition{name: "condition",class:"condition"}        
-                %option{value:"condition1"} 新品、未使用
-                %option{value: "condition2"} 未使用に近い
-                %option{value: "condition3"} 目立った傷や汚れがあり
-                %option{value: "condition4"} やや傷や汚れがあり
-                %option{value: "condition5"} その他
+              = form.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
+              -# %select#condition{name: "condition",class:"condition"}        
+              -#   %option{value:"condition1"} 新品、未使用
+              -#   %option{value: "condition2"} 未使用に近い
+              -#   %option{value: "condition3"} 目立った傷や汚れがあり
+              -#   %option{value: "condition4"} やや傷や汚れがあり
+              -#   %option{value: "condition5"} その他
 
 
         .new__content__main__childrens__deliverys
@@ -93,35 +104,43 @@
             .new__content__main__childrens__deliverys__box__box2
               配送料の負担 必須
               %br/
-              %select#contribution{name: "contribution",class:"contribution"}        
-                %option{value: "contribution1"} 選択してください
-                %option{value: "contribution2"} 送料込み
-                %option{value: "contribution3"} 着払い
-               
-            .new__content__main__childrens__deliverys__box__box5
-              発送までの日数 必須
-              %select#date{name: "date",class:"date"}        
-                %option{value: "condition1"} 未定
-                %option{value: "condition2"} ラクラクフリマ便
-                %option{value: "condition3"} ゆうメール
-                %option{value: "condition4"} レターパック
+              = form.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
+              -# =form.select :postage, aa: "選択してください",class:"contribution"     
+              -# =form.select :region,pleaceholder: "",class:"categorie"  
+              -# =form.select :condition,pleaceholder: "",class:"categorie_1" 
+              -# =form.select :shipping,pleaceholder: "",class:"categorie_1"     
+              -# %option{value: "contribution1"} 選択してください
+              -# %option{value: "contribution2"} 送料込み
+              -# %option{value: "contribution3"} 着払い
+                  
+            -# .new__content__main__childrens__deliverys__box__box5
+            -#   発送までの日数 必須
+            -#   = form.select(:shipping, [["未定", "未定"], ["ラクマフリマ便", "ラクマフリマ便"],["ゆうメール","ゆうメール"],["レターパック","レターパック"]], {prompt:"選択してください"}, {class: "date"})
+              -# = form.select(:shipping, [["未定", "未定"], ["ラクマフリマ便", "ラクマフリマ便"],["ゆうメール","ゆうメール"],["レターパック","レターパック"]], {prompt:"選択してください"}, {class: "date"})
+              -# %select#date{name: "date",class:"date"}        
+              -#   %option{value: "condition1"} 未定
+              -#   %option{value: "condition2"} ラクラクフリマ便
+              -#   %option{value: "condition3"} ゆうメール
+              -#   %option{value: "condition4"} レターパック
             .new__content__main__childrens__deliverys__box__box3
-              配送の方法
+              配送の日数
               %br/
-              %select#delivery{name: "delivery",class:"delivery"}        
-                %option{value: "delivery1"} 北海道
-                %option{value: "delivery2"} 神奈川
-                %option{value:"delivery3"} 東京
-                %option{value: "delivery4"} 福岡
+              = form.select(:shipping, [["１〜２日で発送", "１〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
+              -# %select#delivery{name: "delivery",class:"delivery"}        
+              -#   %option{value: "delivery1"} 北海道
+              -#   %option{value: "delivery2"} 神奈川
+              -#   %option{value:"delivery3"} 東京
+              -#   %option{value: "delivery4"} 福岡
             .new__content__main__childrens__deliverys__box__box4
               配送の地域 必須
               %br/
-              %select#area{name: "area",class:"area"}        
-                %option{value: "condition1"} 選択してください
-                %option{value: "condition2"} 1~2日で発送
-                %option{value: "condition3"} ２~３日で発送
-                %option{value:  "condition4"} ４~７日で発送
-                %option{value: "condition5"} その他
+              = form.select(:region, [["神奈川", "神奈川"], ["東京", "東京"],["沖縄","沖縄"],["北海道","北海道"]], {prompt:"選択してください"}, {class: "area"})
+              -# %select#area{name: "area",class:"area"}        
+              -#   %option{value: "condition1"} 選択してください
+              -#   %option{value: "condition2"} 1~2日で発送
+              -#   %option{value: "condition3"} ２~３日で発送
+              -#   %option{value:  "condition4"} ４~７日で発送
+              -#   %option{value: "condition5"} その他
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
@@ -134,7 +153,7 @@
                   ¥
                 
               
-              %input#price{name: "price", placeholder: "", type: "number",class:"price"}/
+              =form.number_field :price, placeholder: "", type: "number",class:"price"
               
             .new__content__main__childrens__sale__box__box2
               %p.left
@@ -149,7 +168,7 @@
                   ー
               .new__content__main__childrens__sale__box__box3__middle
                 .new__content__main__childrens__sale__box__box3__middle__buttn1
-                  %input#submit{name: "submit", type: "submit",class:"submit"}/
+                  =form.submit name: "submit", class:"submit", value: "送信"
                 .new__content__main__childrens__sale__box__box3__middle__buttn2 
                   = link_to("戻る","#" ,class: "back") 
               .new__content__main__childrens__sale__box__box3__bottom
