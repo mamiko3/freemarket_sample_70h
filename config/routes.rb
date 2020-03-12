@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -11,8 +11,15 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
+  resources :items, only: [:index,:show,:new,:create] do
+    resources :purchases, only: [:index] do
+      collection do
+        post 'pay', to: 'purchases#pay'
+        get 'done', to: 'purchases#done'
+      end
+    end
+  end  
 
-  resources :items, only: [:index,:show,:new,:create]
   resources :cards, only: [:new, :show] do
     collection do
       post 'show', to: 'cards#show'
@@ -20,6 +27,6 @@ Rails.application.routes.draw do
       post 'delete', to: 'cards#delete'
     end
   end
-
+  
 end
 
