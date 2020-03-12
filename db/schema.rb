@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_03_11_075653) do
-
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "zip", null: false
@@ -58,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_075653) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,6 +69,11 @@ ActiveRecord::Schema.define(version: 2020_03_11_075653) do
     t.string "region", null: false
     t.string "condition", null: false
     t.string "shipping", null: false
+    t.integer "size_id"
+    t.integer "category_id", null: false
+    t.integer "user_id", null: false
+    t.integer "buyer_id"
+    t.integer "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_075653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
+    t.string "image"
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
@@ -103,7 +108,6 @@ ActiveRecord::Schema.define(version: 2020_03_11_075653) do
     t.string "year_birth_at", null: false
     t.string "month_birth_at", null: false
     t.string "day_birth_at", null: false
-    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
