@@ -8,9 +8,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    # @item.brands.new
-    # @item.categorys.new
-    # @item.sizes.new
   end
 
   def create
