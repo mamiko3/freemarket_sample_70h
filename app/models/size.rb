@@ -1,4 +1,4 @@
 class Size < ApplicationRecord
-  has_many :items
-  # validates :name, presence: true
+  belongs_to :items, optional: true
+  validates :name, presence: true
 end
