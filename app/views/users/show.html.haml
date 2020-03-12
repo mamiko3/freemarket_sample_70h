@@ -1,0 +1,68 @@
+%html  
+  %body
+    .pcHeader
+      .pcHeader__headerInner
+        .pcHeader__headerInner__mainHeader
+          %h1.pcHeader__headerInner__mainHeader__icon
+            = link_to image_tag(src="logo.png",size:"140x41"),root_path
+          .pcHeader__headerInner__mainHeader__searchBox
+            = form_with method:"#",local: true do |f|
+              %input{class:"searchBox--input",name:"key",placeholder:"キーワードから探す"}
+              %button{type:"submit"}
+                .icon
+                  = image_tag src="icon-search 1.png",size:"19.14x19.14"
+        .pcHeader__headerInner__nav
+          %ul.pcHeader__headerInner__nav__listsLeft
+            %li.pcHeader__headerInner__nav__listsLeft__item--first
+              カテゴリー
+            .pcHeader__headerInner__nav__listsLeft__treedisplayNone
+              %ul.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree
+                %li.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree__item
+            %li.pcHeader__headerInner__nav__listsLeft__item
+              ブランド
+              .brandsPulldowndisplayNone
+          %ul.pcHeader__headerInner__nav__listsRight
+          - if user_signed_in?
+            %li.pcHeader__headerInner__nav__listsRight__login
+              =link_to"ログアウト",destroy_user_session_path
+          - else
+            %li.pcHeader__headerInner__nav__listsRight__login
+              =link_to"ログイン",new_user_session_path
+            %li.pcHeader__headerInner__nav__listsRight__new
+              =link_to"新規登録",new_user_registration_path
+    .user-main
+      %table
+        %tbody
+          %tr
+            %th 名前
+            %td 
+              =@name1
+              =@name2
+          %tr
+            %th ニックネーム
+            %td
+              =@nickname
+          %tr
+            %th メールアドレス
+            %td
+              =link_to"メールアドレス変更"
+          %tr
+            %th パスワード
+            %td
+              =link_to"パスワード変更"
+          %tr
+            %th クレジットカード情報
+            %td
+              =link_to"クレジットカード情報変更"
+              #br
+              =link_to"クレジットカード新規登録"
+
+    .appBanner
+      .appBanner__inner
+        %h2.appBanner__inner__title
+          誰でも簡単、人生を変えるフリマアプリ
+        %p.appBanner__inner__text
+          今すぐ無料ダウンロード
+        .appBanner__inner__icon
+
+= render"layouts/footer"
