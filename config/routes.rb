@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
-  resources :items, only: [:index,:show,:new]
+  resources :items, only: [:index,:show,:new,:create]
   resources :cards, only: [:new, :show] do
     collection do
       post 'show', to: 'cards#show'
