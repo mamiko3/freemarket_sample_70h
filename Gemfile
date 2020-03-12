@@ -87,5 +87,9 @@ gem 'dotenv-rails'
 gem 'dotenv', '~> 2.7', '>= 2.7.5'
 
 gem 'rails-i18n'
+
+gem 'active_hash'
+
 gem 'fog-aws'
+
 
