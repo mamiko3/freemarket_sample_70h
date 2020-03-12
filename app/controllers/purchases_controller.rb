@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   def index
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
-      redirect_to controller: "cards", action: "new"
+      redirect_to new_card_path
     else
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       #保管した顧客IDでpayjpから情報取得
@@ -23,7 +23,7 @@ class PurchasesController < ApplicationController
       :currency => 'jpy',              #日本円
     )
     @item.update(buyer_id: current_user.id) #itemsテーブルのbuyer_idに購入者のIDを入れる
-    redirect_to action: 'done' #完了画面に移動
+    redirect_to done_item_purchases_path #完了画面に移動
   end
 
   def done
