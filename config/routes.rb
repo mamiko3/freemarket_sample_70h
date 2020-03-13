@@ -11,6 +11,14 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
+
+  resources :items
+  resources :images do
+    member do
+      get 'show_image'
+    end
+  end
+  resources :users, only: [:show]
   resources :items, only: [:index,:show,:new,:create] do
     resources :purchases do
       collection do

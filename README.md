@@ -73,26 +73,29 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :sizes
+- has_ancestry
+
 
 ## sizesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
-|category_id|integer|
+|name|string||
+|category_id|integer|foreign_key: true|
 
 ### Association
-- has_many :items
 - belongs_to :category
+
 
 ## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
+|category_id|integer|foreign_key: true|
 
 ### Association
-- has_many :items
+- belongs_to :category
 
 
 ## likesテーブル
@@ -149,8 +152,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|card_id|string|
-|customer_id|string|
+|card_id|string|----|
+|customer_id|string|---|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
