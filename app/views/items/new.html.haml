@@ -13,14 +13,18 @@
             %strong 必須
             %br/
             最大１０枚までアップロード可能
-            = form.fields_for :images do |t|
-              = t.label :image,class:"icons" do
-                = icon( 'fas',"fas fa-camera", class: "icon")
-                %p.text
-                  ドラッグアンドドロップ
-                  %br/
-                  またはクリックしてファイルをアップロード
-                = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+            #image-box
+              = form.fields_for :images do |t|
+                = t.label :image,class:"icons" do
+                  = icon( 'fas',"fas fa-camera", class: "icon")
+                  %p.text
+                    ドラッグアンドドロップ
+                    %br/
+                    またはクリックしてファイルをアップロード
+                  .js-file_group{"data-index" => "#{t.index}"}
+                    = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                    %span.js-remove
+                      削除
              
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
