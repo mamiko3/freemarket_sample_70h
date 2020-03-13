@@ -83,9 +83,9 @@
                       %th 発送日の目安
                       %td そのうち
               -  if user_signed_in? && current_user.id == @item.user_id  
-                %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
+                =link_to '編集画面に進む',edit_item_path,class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn"
               -else
-                %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}購入画面に進む
+                =link_to '購入画面に進む',edit_item_path,class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn"
               .main__showMain__contentRight__top-content__itemBox__item-Detail
                 最近口内炎ができてめちゃ痛いです。
               .main__showMain__contentRight__top-content__itemBox__optionalArea
