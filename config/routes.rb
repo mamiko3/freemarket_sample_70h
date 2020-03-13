@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
   resources :items, only: [:index,:show,:new,:create] do
-    resources :purchases, only: [:index] do
+    resources :purchases do
       collection do
+        get 'index', to: 'purchases#index'
         post 'pay', to: 'purchases#pay'
         get 'done', to: 'purchases#done'
       end
