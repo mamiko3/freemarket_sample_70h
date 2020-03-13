@@ -32,17 +32,17 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-  desc ‘upload credentials.yml.enc’
+  desc 'upload credentials.yml.enc'
   task :upload do
     on roles(:app) do |host|
       if test "[ ! -d #{shared_path}/config ]"
         execute "mkdir -p #{shared_path}/config"
       end
-      upload!(‘config/credentials.yml.enc’, "#{shared_path}/config/credentials.yml.enc")
+      upload!('config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc")
     end
   end
-  before :starting, ‘deploy:upload’
-  after :finishing, ‘deploy:cleanup’
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
 end
 
 
@@ -55,4 +55,3 @@ end
     AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
     AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
   }
-end
