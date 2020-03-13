@@ -1,27 +1,27 @@
-%h1.buy-content__attention
-  %i.far.fa-clock
-    発送をお待ちください
-  %h2.buy-content__attention__title
-    購入が完了しました
-  .buy-content__item
-    .buy-content__item__inner
-      .buy-item-main
+.purchase_confirmation
+  .register-area
+    .register-area__box
+      = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
+      %h2.purchase
+        購入が完了しました
+      %h2.purchase-icon
+        %i.far.fa-clock
+          発送をお待ちください
+      .buy-content__item
+        %h3.purchase 購入商品
         .buy-item-image
-          -# = image_tag "#{@item.images[0].url}", size: '64x64', class: 'buydetails-contet__image'image 投稿機能が未実装のため、実装完了までコメントアウト
+          = image_tag "#{@image.image}", class: "purchase-image"
         .buy-item-detail
-          .buy-item-name
-            = @item.name
-            %p.buy-price
-              %span 
-                = "¥#{@item.price.to_s}"
-              %span
-                .shipping-free (税込) 送料込み
-  .buy-content__item
-    %form.buy-form
-      .buy-price-table
-        .buy-price-table__left
-          支払金額
-        .buy-price-table__right
-          = "¥#{@item.price.to_s}"
-      .buy-content__user-info__submit
-        = link_to "トップページへ戻る", root_path, class: 'buy-content__user-info__submit__button'
+          = @item.name
+          %p.buy-price
+            = "¥#{@item.price.to_s}"
+            %span.shipping-free (税込) 送料込み
+
+      .buy-content__item
+        %form.buy-form
+          .buy-price-table__left
+            %h3.purchase 支払金額
+          .buy-price-table__right
+            = "¥#{@item.price.to_s}"
+          
+          = link_to "トップページへ戻る", root_path, class: 'return'

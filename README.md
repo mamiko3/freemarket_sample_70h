@@ -68,26 +68,28 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|
 
 ### Association
 - has_many :items
-
+- has_many :sizes
 
 ## sizesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|
+|category_id|integer|
 
 ### Association
 - has_many :items
+- belongs_to :category
 
 ## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|
 
 ### Association
 - has_many :items
@@ -147,7 +149,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|card_id|string|
+|customer_id|string|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
