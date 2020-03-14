@@ -10,11 +10,12 @@ CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',     #AWSのアクセスキーとシークレットキーを環境変数で定義する
-      aws_access_key_id: Rails.application.credentials.aws[:access_key_id], #credentails.ymlに鍵の本体があります
-      aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],  #credentails.ymlに鍵の本体があります
-      region: 'exitap-northeast-1'
+      aws_access_key_id: Rails.application.credentials[:aws][:access_key_id], #credentails.ymlに鍵の本体があります
+      aws_secret_access_key: Rails.application.credentials[:aws][:secret_access_key],  #credentails.ymlに鍵の本体があります
+      region: 'ap-northeast-1'
     }
     config.fog_directory  = 'teamh70ki'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/teamh70ki'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/teamh70ki' #カリキュラム
+    # config.asset_host = 'https://teamh70ki.s3.amazonaws.com' #投稿した画像が表示されないとき
   end
 end

@@ -92,4 +92,4 @@ gem 'active_hash'
 
 gem 'fog-aws'
 
-
+gem 'ancestry'
