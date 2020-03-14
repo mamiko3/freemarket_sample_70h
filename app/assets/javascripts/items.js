@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', ()=> {
                   `;
     return html;
   };
-  
+
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0,lastIndex);
@@ -47,8 +47,6 @@ $(document).on('turbolinks:load', ()=> {
    const hiddenCheck = $(`input[data-index=${targetIndex}].hidden-destroy`);
    if (hiddenCheck) hiddenCheck.prop('checked', true);
    $(this).parent().remove();
-  //  $(`img[data-index="${targetIndex}"]`).remove();
-  //  $(`img[data-index="${targetIndex}"]`).remove();
    if ($('.abc').length == 0) $('#form-wrapper').append(buildFileField(fileIndex[0]));
   });
 });

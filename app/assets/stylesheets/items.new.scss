@@ -48,7 +48,6 @@
           margin: auto;
           padding: 40px;
           &__box{
-            // position: relative; ;
             height: 100%;
             width: 100%;
             .icons{
@@ -87,9 +86,7 @@
               text-align: center;
               margin-top: 20px;
             }
-            // }
             .abc{
-              // display: none;
               opacity: 0;
             }
           }
@@ -175,7 +172,6 @@
                 height: 30%;
                 width: 100%;
                   .brnd{
-                    // display: none;
                     padding: 20px;
                     margin-top: 10px;
                     width: 100%;
@@ -386,7 +382,6 @@
       bottom: 0;
       height: 128px;
       width: 100vw;
-      // background-color: teal;
       bottom: 0;
         &__list{
           display: flex;

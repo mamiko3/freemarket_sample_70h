@@ -32,7 +32,6 @@ class ItemsController < ApplicationController
   def destroy
     @item= Item.new
     @item.destroy
-    # redirect_to   new_item_path
   end
 
 
