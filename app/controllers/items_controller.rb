@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-#  before_action :set_item,except: [:new,:create,:destroy]
   def index
     @items = Item.all
   end
@@ -30,15 +29,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item= Item.new
-    @item.destroy
   end
 
 
   def item_params
     params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy,:id])
   end
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+ 
 end
