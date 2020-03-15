@@ -28,11 +28,12 @@
           .main__showMain__contentRight__top-content
             .main__showMain__contentRight__top-content__itemBox
               .main__showMain__contentRight__top-content__itemBox__name
-                unti
+                = @item.name
               .main__showMain__contentRight__top-content__itemBox__body
                 %ul
                   %li
-                    =image_tag src="icon-01.png"
+                    - @item.images.each do |image|
+                      = image_tag image.image.url, size: '300x300'
                     %ul
                       %li
                         =image_tag src="icon-02.png"
@@ -81,7 +82,7 @@
                     %tr
                       %th 発送日の目安
                       %td そのうち
-              -  if user_signed_in? && current_user.id 
+              -  if user_signed_in? && current_user.id == @item.user_id  
                 %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
               -else
                 %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}購入画面に進む
