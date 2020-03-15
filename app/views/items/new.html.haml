@@ -13,14 +13,29 @@
             %strong 必須
             %br/
             最大１０枚までアップロード可能
-            = form.fields_for :images do |t|
-              = t.label :image,class:"icons" do
-                = icon( 'fas',"fas fa-camera", class: "icon")
-                %p.text
-                  ドラッグアンドドロップ
-                  %br/
-                  またはクリックしてファイルをアップロード
-                = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+            #image-box
+              #previews
+                =if @item.persisted?
+                  =@item.images.each_with_index do |image, i|
+                    =image_tag image.src.url,data:{index:i},width:"100",height:'100'
+              = form.fields_for :images do |t|
+                #form-wrapper
+                  %label.icons
+                    = icon( 'fas',"fas fa-camera", class: "icon")
+                    %p.text
+                      ドラッグアンドドロップ
+                      %br/
+                      またはクリックしてファイルをアップロード
+                  .js-file_group{"data-index" => "#{t.index}"}
+                    = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                    = if @item.persisted?
+                      =image.check_box :destroy,data:{index:t.index},class:"hidden-destroy"
+                  = if @item.persisted?
+                    .js-file_group{"data-index"=>"#{@item.images.count}"}
+                      = file_field_tag :image, name: "item[images_attributes][#{@t.images.count}][:image]", class: 'abc'
+                      .js-remove 削除
+
+
              
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
@@ -116,7 +131,7 @@
             .new__content__main__childrens__deliverys__box__box4
               配送の地域 必須
               %br/
-              = form.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"}
+              = form.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
@@ -150,8 +165,6 @@
               .new__content__main__childrens__sale__box__box3__bottom
                 %p
                   禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-
-
 
     .new__content__footer
       .new__content__footer__list
