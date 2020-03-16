@@ -27,7 +27,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(@item)
+    @item = Item.find(params[:id])
+    @prefectures=Prefecture.all
   end
 
   def update
