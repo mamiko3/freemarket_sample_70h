@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def show
@@ -11,7 +12,20 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @prefectures=Prefecture.all
+    @category = Category.all.order("id ASC").limit(13) # categoryの親を取得
   end
+
+  def category_children  
+    @category_children = Category.find(params[:itemcategory]).children 
+    end
+  # Ajax通信で送られてきたデータをparamsで受け取り､childrenで子を取得
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:itemcategory]).children
+    end
+  # Ajax通信で送られてきたデータをparamsで受け取り､childrenで孫を取得｡（実際には子カテゴリーの子になる｡childrenは子を取得するメソッド)
+
+
 
   def create
     @prefectures=Prefecture.all

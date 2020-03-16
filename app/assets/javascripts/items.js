@@ -50,3 +50,6 @@ $(document).on('turbolinks:load', ()=> {
    if ($('.abc').length == 0) $('#form-wrapper').append(buildFileField(fileIndex[0]));
   });
 });
+
+
+
