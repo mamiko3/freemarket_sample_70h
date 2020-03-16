@@ -13,7 +13,7 @@
             %strong 必須
             %br/
             
-            最大１０枚までアップロード可能
+            最大10枚までアップロード可能
             #image-box
               #previews
                 =if @item.persisted?
@@ -37,7 +37,6 @@
                       .js-remove 削除
 
 
-             
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
             .new__content__main__childrens__items__box__box1
@@ -62,7 +61,20 @@
               %br/
               入力してください
               
-              
+            
+
+            -# .product_select-details
+            -#   .product_select-group
+            -#     .product_header
+            -#       カテゴリー
+            -#     .product_require
+            -#       必須
+            -#     .product_category-select
+            -#       ここにプルダウン？
+            -#     = form.collection_select :category, @category, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "category_select" }
+            -#     %i.fa.fa-chevron-down
+            -#   .product_select-children
+
 
           
         .new__content__main__childrens__categories

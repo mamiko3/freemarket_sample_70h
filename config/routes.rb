@@ -18,8 +18,15 @@ Rails.application.routes.draw do
       get 'show_image'
     end
   end
+
   resources :users, only: [:show]
-  resources :items, only: [:index,:show,:new,:create,:destroy] do
+
+  resources :items, only: [:index,:show,:new,:create,:destroy,:edit] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+
     resources :purchases do
       collection do
         get 'index', to: 'purchases#index'
