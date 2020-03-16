@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   require 'payjp'#Payjpの読み込み
-  before_action :set_card, :set_item
+  before_action :set_card, :set_item, :set_image, :set_address
 
   def index
     if @card.blank?
@@ -36,5 +36,13 @@ class PurchasesController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-  end 
+  end
+
+  def set_image
+    @image = Image.find_by(item_id: params[:item_id])
+  end
+
+  def set_address
+    @address = Address.find_by(user_id: current_user.id)
+  end
 end

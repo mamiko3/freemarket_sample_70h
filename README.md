@@ -68,7 +68,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|
 
 ### Association
 - has_many :items
@@ -91,7 +91,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|
 |category_id|integer|foreign_key: true|
 
 ### Association
