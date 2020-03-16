@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+    @item = Item.find(@item)
   end
 
   def update
