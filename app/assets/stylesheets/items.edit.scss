@@ -35,7 +35,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        &__imges{
+        .clearfix{
           height: 300px;
           width: 100%;
           border-bottom: 1px solidrgb(231, 229, 229);

@@ -1,3 +1,4 @@
+
 .new
   .new__content
     .new__content__header
@@ -5,22 +6,24 @@
 
     .new__content__main
       .new__content__main__childrens
-      = form_with(model: @item, local: true)do |f|
-        .new__content__main__childrens__imges
-          .new__content__main__childrens__imges__box
-            -@item.images.each do|image|
-              =image_tag image.image.url,size: "100x100"
-            %br/
-            最大１０枚まで追加可能
-            = f.fields_for :images do |f|
-              = f.label :image,class:"icons" do
-                = icon( 'fas',"fas fa-camera", class: "icon")
-                %p.text
-                  ドラッグアンドドロップ
-                  %br/
-                  またはクリックしてファイルをアップロード
-                = f.file_field :image,type: "file" ,class:"abc",value:"textarea"
-             
+        %h2 商品の情報を入力
+      = form_with model: @product, class: "form", id: "product-form" do |f|
+        .form-image
+          .form-image__title
+            %label 出品画像
+            %span 必須
+            .form-image__text 最大10枚までアップロードできま
+            .clearfix
+              - @itemss.images.each do |image|
+                = image_tag image.image.url, size: '300x300'            
+                %ul#previews
+                  = f.fields_for :images do |image|
+                    - @itemss.images.each_with_index do |img, i|
+                      %li.image-preview
+                        %label.upload-label{style:"display: none;"}
+
+
+ 
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
             .new__content__main__childrens__items__box__box1
@@ -74,13 +77,12 @@
               ブランド
               %br/
               = f.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
+              
             .new__content__main__childrens__categories__box__box4
               商品の状態 必須
               %br/
               = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
               
-
-
         .new__content__main__childrens__deliverys
           .new__content__main__childrens__deliverys__box
             .new__content__main__childrens__deliverys__box__box1
@@ -99,21 +101,20 @@
               -#   %option{value: "condition3"} ゆうメール
               -#   %option{value: "condition4"} レターパック
             .new__content__main__childrens__deliverys__box__box3
-              配送の日数
               %br/
               = f.select(:shipping, [["１〜２日で発送", "１〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
             .new__content__main__childrens__deliverys__box__box4
-              配送の地域 必須
+              =f.label :region_id,"配送の地域"
               %br/
               = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"}
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
-            価格 (¥300~9,999,999)
+            =f.label :price,"価格" 
             .new__content__main__childrens__sale__box__box1
               .flex
                 %p.left
-                  販売価格 必須
+                  販売価格(300~9,999,999) 必須
                 %p.rigth
                   ¥
                 
@@ -135,7 +136,7 @@
                 .new__content__main__childrens__sale__box__box3__middle__buttn1
                   = f.submit "変更する", class:"submit"
                 .new__content__main__childrens__sale__box__box3__middle__buttn2 
-                  = link_to("出品物を削除","#" ,class: "back") 
+                  = link_to("出品物を削除","item_path(item)" ,class: "back", method: :delete) 
               .new__content__main__childrens__sale__box__box3__bottom
                 %p
                   禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
