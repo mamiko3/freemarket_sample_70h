@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show]
-  resources :items, only: [:index,:show,:new,:create] do
+  resources :items, only: [:index,:show,:new,:create,:destroy] do
     resources :purchases do
       collection do
         get 'index', to: 'purchases#index'
