@@ -9,7 +9,7 @@
         .buy-content__item
           %h3.purchase 購入商品
           .buy-item-image
-            = image_tag "#{@image.image}", class: "purchase-image"
+            -# = image_tag "#{@image.image}", class: "purchase-image"
           .buy-item-detail
             = @item.name
             %p.buy-price
@@ -42,5 +42,5 @@
           = @address.building
           %br
           = "#{current_user.last_name}#{current_user.first_name}"
-          = form_tag(action: :pay, method: :post) do
-            %button.buy-button{type:"submit"} 購入する
+          = form_with url: pay_item_purchases_path, method: :post, local: true do |form|
+            %button.buy-button 購入する
