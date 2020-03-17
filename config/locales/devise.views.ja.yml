@@ -6,10 +6,10 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認のため再度パスワード入力"
-        remember_me: "ログインを記憶させる場合はチェック"
+        remember_me: "次回から自動ログイン"
     models:
       user: "ユーザー"
-  devise:
+  users:
     confirmations:
       new:
         resend_confirmation_instructions: "アカウント確認メール再送"

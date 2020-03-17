@@ -3,5 +3,9 @@
 %h2 登録完了！
 %br/
 %h2 ご登録ありがとうございました。
+
+.create_addresses_view
 = link_to "FURIMA トップへ戻る", root_path
-= link_to "ログアウト", destroy_user_session_path, method: :delete
+-# = link_to "ログアウト", destroy_user_session_path, method: :delete
+
+= render 'layouts/footer'
