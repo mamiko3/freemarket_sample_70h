@@ -27,12 +27,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item_edit = Item.find(params[:id])
+    @images = @item_edit.images
     @prefectures=Prefecture.all
   end
 
   def update
-
+ 
   end
 
   def destroy

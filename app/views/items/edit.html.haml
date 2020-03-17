@@ -3,7 +3,6 @@
     .new__content__header
       .new__content__header__text
         = image_tag src="logo.png", size:'200x70'
-        ここにロゴ
     .new__content__main
       .new__content__main__childrens
       = form_with(model: @item, local: true)do |form|
@@ -15,10 +14,10 @@
             最大１０枚までアップロード可能
             #image-box
               #previews
-                =if @item.persisted?
-                  =@item.images.each_with_index do |image, i|
+                -if @item_edit.persisted?
+                  -@item_edit.images.each_with_index do |image, i|
                     =image_tag image.image.url,data:{index:i},width:"100",height:'100'
-              = form.fields_for :images do |t|
+              = form.fields_for :images,@item_edit.images  do |image|
                 #form-wrapper
                   %label.icons
                     = icon( 'fas',"fas fa-camera", class: "icon")
@@ -26,13 +25,13 @@
                       ドラッグアンドドロップ
                       %br/
                       またはクリックしてファイルをアップロード
-                  .js-file_group{"data-index" => "#{t.index}"}
-                    = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
-                    = if @item.persisted?
-                      =image.check_box :destroy,data:{index:t.index},class:"hidden-destroy"
-                  = if @item.persisted?
-                    .js-file_group{"data-index"=>"#{@item.images.count}"}
-                      = file_field_tag :image, name: "item[images_attributes][#{@t.images.count}][:image]", class: 'abc'
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                    - if @item_edit.persisted?
+                      =image.check_box :destroy,data:{index:image.index},class:"hidden-destroy"
+                  - if @item_edit.persisted?
+                    .js-file_group{"data-index"=>"#{@item_edit.images.count}"}
+                      = file_field_tag :image, name: "item[images_attributes][#{@item_edit.images.count}][:image]", class: 'abc'
                       .js-remove 削除
 
         .new__content__main__childrens__items
@@ -158,7 +157,7 @@
 
       .new__content__footer__image
         .new__content__footer__image__box
-          -# = image_tag src="logo.png", size:'120x40' 
+          = image_tag src="logo.png", size:'120x40' 
           ここにロゴ
       .new__content__footer__text
         .new__content__footer__text__box

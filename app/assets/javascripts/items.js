@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `<div class="js-remove-wrapper">
                     <img data-index="${index}" src="${url}" width="100px" height="100px">
                     <span class="js-remove" data-index="${index}">
-                      <a rel="nofollow" data-method="delete" data-index="${index}" href="/items/new">削除</a>
+                      <a rel="nofollow" data-method="delete" data-index="${index}" href="/items/edit">削除</a>
                     </span>
                   </div>
                   `;
