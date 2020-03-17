@@ -35,11 +35,10 @@
       = image_tag src="logo-white.png",size:"160x46.34"
     -# %p
     -#   FURIMA
-%a
-  .purchasesBtn
-    %span.purchasesBtn__text
-      出品する
-    %span.purchasesBtn__icon
-      %a
+  = link_to new_item_path do
+    .purchasesBtn
+      %span.purchasesBtn__text
+        出品する
+      %span.purchasesBtn__icon
         = image_tag src="icon_camera.png",size:"54x54"
 

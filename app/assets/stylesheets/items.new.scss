@@ -7,6 +7,16 @@
   padding: 0;
 }
 
+img.furima-logo {
+  width: 15%;
+}
+
+img.footer-logo {
+  width: 15%;
+}
+
+
+
 .new{
 
   &__content{
@@ -23,7 +33,7 @@
        width: 100%;
        text-align: center;
        margin: auto 0;
-       margin-top: 30px;
+       margin-top: 10px;
      }
 
 
@@ -326,7 +336,7 @@
                       .submit{
                         margin-top: 20px;
                         display       : inline-block;
-                        border-radius : 5%;          
+                        border-radius : 5px;          
                         font-size     : 20px;        
                         text-align    : center;      
                         cursor        : pointer;     
@@ -345,7 +355,7 @@
                   justify-content: center;
                   .back{
                   display       : inline-block;
-                  border-radius : 5%;          
+                  border-radius : 5px;          
                   font-size     : 20px;        
                   text-align    : center;      
                   cursor        : pointer;     
@@ -403,6 +413,10 @@
           display: flex;
           justify-content: center;
           margin-top: 10px;
+          &__box {
+            display: flex;
+            justify-content: center;
+          }
         } 
         &__text{
         display: flex;

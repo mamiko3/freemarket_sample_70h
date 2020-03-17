@@ -2,8 +2,7 @@
   .new__content
     .new__content__header
       .new__content__header__text
-        -# = image_tag src="logo.png", size:'200x70'
-        ここにロゴ
+        = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
     .new__content__main
       .new__content__main__childrens
       = form_with(model: @item, local: true)do |form|
@@ -191,8 +190,7 @@
 
       .new__content__footer__image
         .new__content__footer__image__box
-          -# = image_tag src="logo.png", size:'120x40' 
-          ここにロゴ
+          = image_tag "logo.png", alt: "FURIMAロゴ", class: "footer-logo"
       .new__content__footer__text
         .new__content__footer__text__box
           @Fulima,inc.
