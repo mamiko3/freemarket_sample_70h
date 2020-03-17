@@ -27,17 +27,27 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item_edit = Item.find(params[:id])
-    @images = @item_edit.images
+
+    @item = Item.find(params[:id])
+    @image = @item.images
     @prefectures=Prefecture.all
+
   end
 
   def update
- 
+    @item = Item.find(params[:id])
+    if @item.user_id == current_user.id
+      @item.update(item_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
   end
 
   def item_params
