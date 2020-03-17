@@ -2,16 +2,20 @@
   .new__content
     .new__content__header
       .new__content__header__text
-        = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
+        =link_to image_tag(src="logo.png", size:'200x70'),root_path
+        -# = image_tag src="logo.png", size:'200x70'
+        -# ここにロゴ
+
     .new__content__main
       .new__content__main__childrens
       = form_with(model: @item, local: true)do |form|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
-            出品画像 
-            %strong 必須
+            出品画像
+            %span.form-require 必須
+            -# %span.form-require3 半角
+            -# %strong 必須
             %br/
-            
             最大10枚までアップロード可能
             #image-box
               #previews
@@ -41,8 +45,9 @@
             .new__content__main__childrens__items__box__box1
               %p.item__text
               商品名 
-              %span
-                必須
+              %span.form-require 必須
+              -# %span
+              -#   必須
               %br/
               = form.text_field  :name,  placeholder: "40文字まで", type: "text"
                 
@@ -53,7 +58,8 @@
             .new__content__main__childrens__items__box__box2
               %p.item__text
                 商品の説明
-                %span
+                %span.form-require 必須
+                -# %span
                   必須
               = form.text_area :explain,class:"textarea"
               %br/
@@ -61,7 +67,15 @@
               入力してください
               
             
-
+            -# .listing-form-box
+            -#   .listing-product-detail__category
+            -#     -# = f.label 'カテゴリー', class: 'listing-default__label'
+            -#     %span.form-require 必須
+            -#     -# %span.listing-default--require 必須
+            -#     .listing-select-wrapper
+            -#       .listing-select-wrapper__box
+            -#         -# = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+            -#         %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
             -# .product_select-details
             -#   .product_select-group
             -#     .product_header
@@ -81,8 +95,10 @@
             .new__content__main__childrens__categories__box__box1
               商品の詳細
             .new__content__main__childrens__categories__box__box2
-              カテゴリー 必須
-              %br/
+              カテゴリー 
+              %span.form-require 必須
+              -# 必須
+              -# %br/
               %select#categorie{name: "categories",class:"categorie"}        
                 %option{value:  "categorie1"} レディース
                 %option{value: "categorie2"} メンズ
@@ -113,7 +129,9 @@
               %br/
               = form.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
             .new__content__main__childrens__categories__box__box4
-              商品の状態 必須
+              商品の状態
+              %span.form-require 必須
+              -# 必須
               %br/
               = form.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
               
@@ -124,7 +142,9 @@
             .new__content__main__childrens__deliverys__box__box1
               配送について
             .new__content__main__childrens__deliverys__box__box2
-              配送料の負担 必須
+              配送料の負担 
+              %span.form-require 必須
+              -# 必須
               %br/
               = form.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
             -# .new__content__main__childrens__deliverys__box__box5
@@ -138,20 +158,25 @@
               -#   %option{value: "condition4"} レターパック
             .new__content__main__childrens__deliverys__box__box3
               配送の日数
+              %span.form-require 必須
               %br/
               = form.select(:shipping, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
             .new__content__main__childrens__deliverys__box__box4
-              配送の地域 必須
+              配送の地域 
+              %span.form-require 必須
+              -# 必須
               %br/
               = form.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
             価格 (¥300~9,999,999)
+            %span.form-require 必須
             .new__content__main__childrens__sale__box__box1
               .flex
                 %p.left
-                  販売価格 必須
+                  販売価格
+                  -# 必須
                 %p.rigth
                   ¥
                 
@@ -190,7 +215,12 @@
 
       .new__content__footer__image
         .new__content__footer__image__box
-          = image_tag "logo.png", alt: "FURIMAロゴ", class: "footer-logo"
+          =link_to image_tag(src="logo.png", size:'140x41'),root_path
+          -# = image_tag src="logo.png", size:'120x40' 
+          -# ここにロゴ
+
       .new__content__footer__text
         .new__content__footer__text__box
-          @Fulima,inc.
+        %br/
+        %p
+          ＠FURIMA,inc.
