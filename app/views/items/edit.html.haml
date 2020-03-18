@@ -13,20 +13,21 @@
             最大１０枚までアップロード可能
             #image-box
               #previews
+                -if @item.persisted?
+                  - @item.images.each_with_index do |image, i|
+                    =image_tag image.image.url,data:{index:i}, class: "js-file_group" ,width:"100px",height:'100px'
+              #form-wrapper
+                %label.icons
+                  = icon( 'fas',"fas fa-camera", class: "icon")
+                  %p.text
+                    ドラッグアンドドロップ
+                    %br/
+                    またはクリックしてファイルをアップロード
+                    
                 = f.fields_for :images do |image|
-                  -if @item.persisted?
-                    - @item.images.each_with_index do |image, i|
-                      =image_tag image.image.url,data:{index:i},width:"100",height:'100'
-              = f.fields_for :images do |image|
-                #form-wrapper
-                  %label.icons
-                    = icon( 'fas',"fas fa-camera", class: "icon")
-                    %p.text
-                      ドラッグアンドドロップ
-                      %br/
-                      またはクリックしてファイルをアップロード
                   .js-file_group{"data-index" => "#{image.index}"}
                     = image.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                    
                     - if @item.persisted?
                       =image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
                   - if @item.persisted?
