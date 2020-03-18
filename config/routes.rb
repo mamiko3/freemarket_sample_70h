@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
+    sessions:      'users/sessions',
+    password:      'users/password',
   }
     devise_scope :user do
       get 'addresses', to: 'users/registrations#new_address'
