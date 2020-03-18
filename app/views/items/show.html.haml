@@ -37,12 +37,19 @@
                    
               .main__showMain__contentRight__top-content__itemBox__price
                 %span
-                  20000
+                  ¥
+                  =@item.price
+                  -# 20000
                 .main__showMain__contentRight__top-content__itemBox__price__price-Detail
                   %span
-                    (税込)
-                  %span
-                    (送料込み)
+                    商品説明
+                    %br/
+                  %p
+                    = @item.explain
+                -# .main__showMain__contentRight__top-content__itemBox__price__price-Detail
+                -#   %span
+                -#     = @item.explain
+                    -# (送料込み)
               .main__showMain__contentRight__top-content__itemBox__table
                 
                 %table
@@ -66,22 +73,35 @@
                       %td
                     %tr 
                       %th 商品の状態
-                      %td 新品/未使用
+                      %td 
+                        =@item.condition
+                      -# 新品/未使用
                     %tr
                       %th 配送料の負担
-                      %td 着払い(購入者負担)
+                      %td 
+                        =@item.postage  # ここのデータの保存方法確認お願いします。
+                        -# 着払い(購入者負担)
                     %tr
                       %th 配送元の地域
-                      %td 千葉県野田市光葉町
+                      %td 
+                        =@item.region
+                        -# 千葉県野田市光葉町
                     %tr
                       %th 発送日の目安
-                      %td そのうち
+                      %td 
+                        =@item.shipping
+                        -# そのうち
               -  if user_signed_in? && current_user.id == @item.user_id  
-                %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
+                = link_to "/items/#{params[:id]}/edit",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
+                  %p 編集画面に進む
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
               -else
-                %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}購入画面に進む
-              .main__showMain__contentRight__top-content__itemBox__item-Detail
-                最近口内炎ができてめちゃ痛いです。
+                = link_to "/items/#{params[:id]}/purchases/index",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
+                  %p 購入画面に進む
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href: "#"}購入画面に進む
+              -# .main__showMain__contentRight__top-content__itemBox__item-Detail
+              -#   = @item.explain
+                -# 最近口内炎ができてめちゃ痛いです。
               .main__showMain__contentRight__top-content__itemBox__optionalArea
                 %ul
                   %li.optionalBtnlikeBtn
@@ -121,4 +141,4 @@
           今すぐ無料ダウンロード
         .appBanner__inner__icon
 
-=render"layouts/footer"
+=render"layouts/footer_usr"

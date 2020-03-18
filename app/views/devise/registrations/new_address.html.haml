@@ -1,7 +1,7 @@
 #header
   #{image_tag 'logo.png'}
 %h2 住所情報登録
-= link_to "ログアウト", destroy_user_session_path, method: :delete
+-# = link_to "ログアウト", destroy_user_session_path, method: :delete
 
 .contents
   = form_for @address do |f|
@@ -52,8 +52,12 @@
       %br/
       = f.text_field :dst_first_name_kana, autofocus: true, autocomplete: "例）なまえ"
     
-    .actions
+    .actions2
       = f.submit "SignUp"
+
+.bottom
+  
+=render 'layouts/footer_usr'
 
 
 
