@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
   def create
     @prefectures=Prefecture.all
     @item = Item.new(item_params)
+    @item.save
     
     # 出品完了画面を表示させるのでTOPへのリダイレクトはコメントアウトします
     # if @item.save

@@ -2,9 +2,7 @@
   .new__content
     .new__content__header
       .new__content__header__text
-        =link_to image_tag(src="logo.png", size:'200x70'),root_path
-        -# = image_tag src="logo.png", size:'200x70'
-        -# ここにロゴ
+        =link_to image_tag(src="logo.png", size:'190x70'),root_path
 
     .new__content__main
       .new__content__main__childrens
@@ -13,8 +11,6 @@
           .new__content__main__childrens__imges__box
             出品画像
             %span.form-require 必須
-            -# %span.form-require3 半角
-            -# %strong 必須
             %br/
             最大10枚までアップロード可能
             #image-box
@@ -46,8 +42,6 @@
               %p.item__text
               商品名 
               %span.form-require 必須
-              -# %span
-              -#   必須
               %br/
               = form.text_field  :name,  placeholder: "40文字まで", type: "text"
                 
@@ -59,35 +53,11 @@
               %p.item__text
                 商品の説明
                 %span.form-require 必須
-                -# %span
-                  必須
               = form.text_area :explain,class:"textarea"
               %br/
               %br/
               入力してください
               
-            
-            -# .listing-form-box
-            -#   .listing-product-detail__category
-            -#     -# = f.label 'カテゴリー', class: 'listing-default__label'
-            -#     %span.form-require 必須
-            -#     -# %span.listing-default--require 必須
-            -#     .listing-select-wrapper
-            -#       .listing-select-wrapper__box
-            -#         -# = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-            -#         %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
-            -# .product_select-details
-            -#   .product_select-group
-            -#     .product_header
-            -#       カテゴリー
-            -#     .product_require
-            -#       必須
-            -#     .product_category-select
-            -#       ここにプルダウン？
-            -#     = form.collection_select :category, @category, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "category_select" }
-            -#     %i.fa.fa-chevron-down
-            -#   .product_select-children
-
 
           
         .new__content__main__childrens__categories
@@ -97,14 +67,13 @@
             .new__content__main__childrens__categories__box__box2
               カテゴリー 
               %span.form-require 必須
-              -# 必須
-              -# %br/
-              %select#categorie{name: "categories",class:"categorie"}        
-                %option{value:  "categorie1"} レディース
-                %option{value: "categorie2"} メンズ
-                %option{value: "categorie3"} 日用品
-                %option{value: "categorie4"} インテリア
-                %option{value: "categorie5"} その他
+              %select#categorie{name: "categories",class:"categorie"}
+                %option{value:  "categorie1"} 選択してください
+                %option{value: "categorie2"} レディース
+                %option{value: "categorie3"} メンズ
+                %option{value: "categorie4"} 日用品
+                %option{value: "categorie5"} インテリア
+                %option{value: "categorie6"} その他
               %br/
 
               -# =form.select :region,pleaceholder: "",class:"categorie"  
@@ -117,12 +86,12 @@
               -# %option{value: "categorie_55"} ワンピース
               -# %br/
 
-              %select#categorie_2{name:  "categories_2",class:"categorie_2"}        
-                %option{value: "categorie_11"} Tシャツ
-                %option{value: "categorie_22"} ブラウス
-                %option{value: "categorie_33"} キャミソール
-                %option{value: "categorie_44"} タンクトップ
-                %option{value:"categorie_55"} その他
+              -# %select#categorie_2{name:  "categories_2",class:"categorie_2"}        
+              -#   %option{value: "categorie_11"} Tシャツ
+              -#   %option{value: "categorie_22"} ブラウス
+              -#   %option{value: "categorie_33"} キャミソール
+              -#   %option{value: "categorie_44"} タンクトップ
+              -#   %option{value:"categorie_55"} その他
               %br/
             .new__content__main__childrens__categories__box__box3
               ブランド
@@ -131,11 +100,9 @@
             .new__content__main__childrens__categories__box__box4
               商品の状態
               %span.form-require 必須
-              -# 必須
               %br/
-              = form.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
+              = form.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["やや目立った傷や汚れあり","やや目立った傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
               
-
 
         .new__content__main__childrens__deliverys
           .new__content__main__childrens__deliverys__box
@@ -144,9 +111,8 @@
             .new__content__main__childrens__deliverys__box__box2
               配送料の負担 
               %span.form-require 必須
-              -# 必須
               %br/
-              = form.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
+              = form.select(:postage, [["送料込み（出品者負担）", "送料込み（出品者負担）"], ["着払い（購入者負担）", "着払い（購入者負担）"]], {prompt:"選択してください"}, {class: "postage"})
             -# .new__content__main__childrens__deliverys__box__box5
             -#   発送までの日数 必須
             -#   = form.select(:shipping, [["未定", "未定"], ["ラクマフリマ便", "ラクマフリマ便"],["ゆうメール","ゆうメール"],["レターパック","レターパック"]], {prompt:"選択してください"}, {class: "date"})
@@ -176,7 +142,6 @@
               .flex
                 %p.left
                   販売価格
-                  -# 必須
                 %p.rigth
                   ¥
                 
@@ -216,11 +181,10 @@
       .new__content__footer__image
         .new__content__footer__image__box
           =link_to image_tag(src="logo.png", size:'140x41'),root_path
-          -# = image_tag src="logo.png", size:'120x40' 
-          -# ここにロゴ
 
-      .new__content__footer__text
-        .new__content__footer__text__box
-        %br/
-        %p
-          ＠FURIMA,inc.
+
+      -# .new__content__footer__text
+      -#   .new__content__footer__text__box
+      -#   %br/
+      -#   %p
+      -#     ＠FURIMA,inc.
