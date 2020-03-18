@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.includes(:images).order("created_at DESC").limit(3)
     @parents = Category.all.order("id ASC").limit(13)
   end
 
@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
@@ -33,30 +34,29 @@ class ItemsController < ApplicationController
   end
 
 
-
   def create
     @prefectures=Prefecture.all
+
     @item = Item.new(item_params)
     
     if @item.save
        redirect_to   root_path
-     else
+    else
        render "new"
-     end
-
+    end
   end
 
-  def edit
-    
+  def edit    
   end
 
   def update
-
   end
 
   def destroy
-
   end
+
+  
+  private
 
   def item_params
     params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,:category_id,images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
