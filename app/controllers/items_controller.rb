@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.includes(:images).order("created_at DESC").limit(3)
     @parents = Category.all.order("id ASC").limit(13)
   end
 
@@ -33,14 +33,9 @@ class ItemsController < ApplicationController
 
   def create
     @prefectures=Prefecture.all
-    @item = Item.new(item_params)
+    @item = Item.new(item_params) # 出品完了画面を表示させるのでTOPへのリダイレクトはコメントアウトします
+    @item.save
     
-    # 出品完了画面を表示させるのでTOPへのリダイレクトはコメントアウトします
-    # if @item.save
-    #   redirect_to   root_path
-    # else
-    #   render "new"
-    # end
   end
 
   def edit    
