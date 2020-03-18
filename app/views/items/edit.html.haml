@@ -15,7 +15,12 @@
               #previews
                 -if @item.persisted?
                   - @item.images.each_with_index do |image, i|
-                    =image_tag image.image.url,data:{index:i}, class: "js-file_group" ,width:"100px",height:'100px'
+                    .preview
+                      =image_tag image.image.url,data:{index:i}, class: "js-file_group" ,width:"100px",height:'100px'
+                      
+                      %a{ class: "js-remove", "index": "#{image.id}" }削除
+                      %a{ class: "js-change"}編集
+
               #form-wrapper
                 %label.icons
                   = icon( 'fas',"fas fa-camera", class: "icon")
@@ -33,7 +38,7 @@
                   - if @item.persisted?
                     .js-file_group{"data-index"=>"#{@item.images.count}"}
                       = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][:image]", class: 'abc'
-                      .js-remove
+                      
 
         .edit__content__main__childrens__items
           .edit__content__main__childrens__items__box
@@ -77,7 +82,7 @@
               商品の状態 必須
               %br/
               = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
-              
+              .js-remove
 
 
         .edit__content__main__childrens__deliverys

@@ -30,12 +30,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @image = @item.images
     @prefectures=Prefecture.all
+
   end
 
   def update
     @item = Item.find(params[:id])
+    @image = @item.images
     if @item.user_id == current_user.id
-      @item.update(update_item_params)
+
+      @item.update(item_params)
       redirect_to root_path
     else
       render 'edit'
@@ -48,11 +51,9 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  private
   def item_params
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
   end
- 
-  def update_item_params
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
-  end
+
 end

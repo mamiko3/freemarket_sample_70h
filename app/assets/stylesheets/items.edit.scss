@@ -34,6 +34,10 @@
       background-color: white;
       height: 100vh;
       margin: 0 auto;
+      .preview{
+        width: 120px;
+
+      }
       &__childrens{
         display: flex;
         justify-content: center;
