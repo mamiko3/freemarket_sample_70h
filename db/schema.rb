@@ -74,8 +74,6 @@ ActiveRecord::Schema.define(version: 2020_03_18_104502) do
     t.datetime "updated_at", null: false
     t.integer "buyer_id"
     t.integer "user_id", null: false
-    t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
