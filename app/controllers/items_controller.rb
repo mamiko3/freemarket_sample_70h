@@ -39,12 +39,12 @@ class ItemsController < ApplicationController
     @prefectures=Prefecture.all
 
     @item = Item.new(item_params)
-    
-    if @item.save
-       redirect_to   root_path
-    else
-       render "new"
-    end
+    @item.save
+    # if @item.save
+    #   redirect_to   root_path
+    # else
+    #   render "new"
+    # end
   end
 
   def edit
@@ -73,7 +73,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_items
