@@ -60,6 +60,7 @@ img.footer-logo {
           &__box{
             height: 100%;
             width: 100%;
+            font-size: 20px;
             .icons{
               align-content: center;
               -webkit-box-align: center;
@@ -69,9 +70,9 @@ img.footer-logo {
               display: flex;
               height: 65%;
                 width: 100%;
-               flex-wrap: wrap;
-               margin: 20px auto;
-               -webkit-box-pack: center;
+                flex-wrap: wrap;
+                margin: 20px auto;
+                -webkit-box-pack: center;
               justify-content: center;
                 position: relative;
                 border-width: 1px;
@@ -89,8 +90,7 @@ img.footer-logo {
                 font-size:1.5em;                 
               }
             }
-           
-             
+            
             .text{
               font-size: 12px;
               text-align: center;
@@ -106,11 +106,12 @@ img.footer-logo {
           padding: 40px;
           height: 400px;
           width: 100%;
-          font-size: 14px;
+          font-size: 16px;
           border-bottom: 1px solid rgb(231, 229, 229);
           &__box{
             height: 100%;
             width: 100%;
+            font-size: 20px;
             &__box1{
               height:50%;
               width:100%;
@@ -120,9 +121,9 @@ img.footer-logo {
                 width: 100%;
                 height: 20%;
                 border-radius: 10px;
-                font-size: 15px;
+                font-size: 14px;
               
-             }
+              }
             }
             
 
@@ -132,9 +133,11 @@ img.footer-logo {
             .textarea{
               margin-top: 10px;
               width: 100%;
-              height: 40%;
+              height: 70%;
               border-radius: 10px;
               padding: 10px;
+              resize: none;
+              font-size: 14px;
             }
           }
         }
@@ -143,40 +146,41 @@ img.footer-logo {
           border-bottom: 1px solid rgb(231, 229, 229);
           height: 600px;
           width: 100%;
-          font-size: 14px;
+          font-size: 16px;
           margin: auto;
-          padding: 45px;
-          padding-bottom:px ;
+          padding: 45px 45px 15px;
+          // padding-bottom:px ;
           &__box{
               height: 100%;
               width: 100%;
               &__box1{
                 height: 10%;
                 width: 100%;
+                font-size: 20px;
               }
               &__box2{
-                height: 40%;
+                height: 30%;
                 width: 100%;
                 .categorie{
                   margin-top: 10px;
-                  font-size: 20px;
+                  font-size: 16px;
                   width: 100%;
-                  height: 20%;
+                  height: 40%;
                 }
-                .categorie_1{
-                  visibility: hidden;
-                  margin-top: 10px;
-                  font-size: 20px;
-                  width: 100%;
-                  height:20%;
-                }
-                .categorie_2{
-                  display: none;
-                  margin-top: 10px;
-                  font-size: 20px;
-                  width: 100%;
-                  height: 20%;
-                }
+                // .categorie_1{
+                //   visibility: hidden;
+                //   margin-top: 10px;
+                //   font-size: 16px;
+                //   width: 100%;
+                //   height:20%;
+                // }
+                // .categorie_2{
+                //   display: none;
+                //   margin-top: 10px;
+                //   font-size: 20px;
+                //   width: 100%;
+                //   height: 20%;
+                // }
               }
             &__box3{
                 height: 30%;
@@ -200,70 +204,75 @@ img.footer-logo {
                     height: 30%;
                   }
               }
-           }
+          }
         }
         &__deliverys{
-          height: 500px;
+          height: 450px;
           width: 100%;
           font-size: 14px;
           border-bottom: 1px solid rgb(231, 229, 229);
-          padding: 40px ;
+          padding: 40px 40px 15px;
           margin: auto;
             &__box{
               height: 100%;
               width: 100%;
+
                 &__box1{
                   width: 100%;
                   height: 10%;
+                  font-size: 20px;
                 }
                 &__box2{
                   width: 100%;
                   height: 20%;
                   margin-top: 10px;
+                  font-size: 16px;
                     .postage{
                       margin-top: 10px;
-                      font-size: 20px;
+                      font-size: 14px;
                       width: 100%;
                       height: 50%;
                     }
                 }
-                &__box5{
-                  width: 100%;
-                  height: 20%;
-                  display: none;
-                  margin-top: 20px;
-                    .date{
-                      margin-top: 10px;
-                      font-size: 20px;
-                      width: 100%;
-                      height: 50%;
-                    }
-                }
+                // &__box5{
+                //   width: 100%;
+                //   height: 20%;
+                //   display: none;
+                //   margin-top: 20px;
+                //     .date{
+                //       margin-top: 10px;
+                //       font-size: 20px;
+                //       width: 100%;
+                //       height: 50%;
+                //     }
+                // }
 
                 &__box3{
                   width: 100%;
                   height: 20%;
                   margin-top: 20px;
+                  font-size: 16px;
                     .delivery{
                       margin-top: 10px;
-                      font-size: 20px;
+                      font-size: 14px;
                       width: 100%;
                       height: 50%;
                     }
                 }
-                &__box3{
-                  width: 100%;
-                  height: 20%;
-                  margin-top: 20px;
-                }
+                // &__box3{
+                //   width: 100%;
+                //   height: 20%;
+                //   margin-top: 20px;
+                // }
 
                 &__box4{
                   width: 100%;
                   height: 20%;
                   margin-top: 20px;
+                  font-size: 16px;
                   .area{
                     margin-top: 10px;
-                    font-size: 20px;
+                    font-size: 14px;
                     width: 100%;
                     height: 50%;
                   }
@@ -272,7 +281,7 @@ img.footer-logo {
         }
 
         &__sale{
-          font-size: 14px;
+          font-size: 20px;
           height: 500px;
           width: 100%;
           margin: auto;
@@ -281,13 +290,14 @@ img.footer-logo {
             height: 100%;
             width: 100%;
                 &__box1{
-                  margin-top: 10px;
+                  margin: 10px;
                   display: flex;
                   height: 15%;
                   width: 100%;
                   .flex{
                     width: 50%;
                     height: 100%;
+                    font-size: 16px;
                     display: flex;
                     justify-content: space-between;
                     .rigth{
@@ -328,7 +338,7 @@ img.footer-logo {
                     }
                   }
                 &__middle{
-                  height: 60%;
+                  height: 40%;
                   width: 100%;
                   &__buttn1{
                     display: flex;
@@ -402,7 +412,7 @@ img.footer-logo {
               list-style: none;
               li{
                 margin-left: 20px;
-                font-size: 12px;
+                font-size: 14px;
                 color: rgb(68, 65, 65);
               }
           }

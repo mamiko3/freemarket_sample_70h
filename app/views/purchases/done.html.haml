@@ -1,7 +1,8 @@
+
 .purchase_confirmation
   .register-area
     .register-area__box
-      = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
+      =link_to image_tag(src="logo.png", size:'130x40'),root_path
       %h2.purchase
         購入が完了しました
       %h2.purchase-icon
