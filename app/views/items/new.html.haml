@@ -2,7 +2,7 @@
   .new__content
     .new__content__header
       .new__content__header__text
-        -# = image_tag src="logo.png", size:'200x70'
+
     .new__content__main
       .new__content__main__childrens
       = form_with(model: @item, local: true)do |f|
@@ -68,10 +68,10 @@
             .new__content__main__childrens__categories__box__box2
 
               .listing-product-detail__category
-                = form.label 'カテゴリー', class: 'category-label'
+                = f.label 'カテゴリー', class: 'category-label'
                 %span.listing-default--require 必須
                 .listing-select-wrapper__box
-                  = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
 
             .new__content__main__childrens__categories__box__box3
@@ -157,8 +157,3 @@
           =link_to image_tag(src="logo.png", size:'140x41'),root_path
 
 
-      -# .new__content__footer__text
-      -#   .new__content__footer__text__box
-      -#   %br/
-      -#   %p
-      -#     ＠FURIMA,inc.
