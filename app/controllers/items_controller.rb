@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.find(params[:id])
   end
 
   def new
@@ -49,14 +48,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @item = Item.find(params[:id])
     @image = @item.images
     @prefectures=Prefecture.all
   
   end
 
   def update
-    # @item = Item.find(params[:id])
     @image = @item.images
     @item.user_id == current_user.id
     if @item.update(item_params)
@@ -67,7 +64,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
     else
