@@ -34,7 +34,7 @@
                   %li
                     - @item.images.each do |image|
                       = image_tag image.image.url, size: '300x300'
-                   
+
               .main__showMain__contentRight__top-content__itemBox__price
                 %span
                   ¥
@@ -102,37 +102,37 @@
               -# .main__showMain__contentRight__top-content__itemBox__item-Detail
               -#   = @item.explain
                 -# 最近口内炎ができてめちゃ痛いです。
-              .main__showMain__contentRight__top-content__itemBox__optionalArea
-                %ul
-                  %li.optionalBtnlikeBtn
-                    お気に入り
-                %ul.main__showMain__contentRight__top-content__itemBox__optionalArea__optional
-                  %li.main__showMain__contentRight__top-content__itemBox__optionalArea__optional__optionalBtn
-                    =link_to"不適切な商品の通報",href:"#"
-            .main__showMain__contentRight__top-content__commentBox
-              %ul.main__showMain__contentRight__top-content__commentBox__commentContents
-                = form_with class:"new_comment",method:"#",local: true do |f|
-                  %textarea{required:"required", placeholder: "コメントする", rows: "2"}
-                %p.main__showMain__contentRight__top-content__commentBox__noticeMsg
-                  相手のことを考え丁寧なコメントを心がけよう。
-                  %br
-                  不快な言葉使いなどは利用制限や退会処分となることがあります。
-                %button{type:"submit",class:"comment"}
-                  コメントする
-          %ul.main__showMain__contentRight__links
-            %li
-              %a{href:'#'}
-                = icon('fa','angle-left')
-                %span
-                  前の商品
-            %l.last-child
-              %a{href:'#'}
-                %span 
-                  後ろの商品
-                = icon('fa','angle-right')
-          .main__showMain__contentRight__relatedItems
-            %a{ href: '#'}
-              メンズをもっとみる
+          -#     .main__showMain__contentRight__top-content__itemBox__optionalArea
+          -#       %ul
+          -#         %li.optionalBtnlikeBtn
+          -#           お気に入り
+          -#       %ul.main__showMain__contentRight__top-content__itemBox__optionalArea__optional
+          -#         %li.main__showMain__contentRight__top-content__itemBox__optionalArea__optional__optionalBtn
+          -#           =link_to"不適切な商品の通報",href:"#"
+          -#   .main__showMain__contentRight__top-content__commentBox
+          -#     %ul.main__showMain__contentRight__top-content__commentBox__commentContents
+          -#       = form_with class:"new_comment",method:"#",local: true do |f|
+          -#         %textarea{required:"required", placeholder: "コメントする", rows: "2"}
+          -#       %p.main__showMain__contentRight__top-content__commentBox__noticeMsg
+          -#         相手のことを考え丁寧なコメントを心がけよう。
+          -#         %br
+          -#         不快な言葉使いなどは利用制限や退会処分となることがあります。
+          -#       %button{type:"submit",class:"comment"}
+          -#         コメントする
+          -# %ul.main__showMain__contentRight__links
+          -#   %li
+          -#     %a{href:'#'}
+          -#       = icon('fa','angle-left')
+          -#       %span
+          -#         前の商品
+          -#   %l.last-child
+          -#     %a{href:'#'}
+          -#       %span 
+          -#         後ろの商品
+          -#       = icon('fa','angle-right')
+          -# .main__showMain__contentRight__relatedItems
+          -#   %a{ href: '#'}
+          -#     メンズをもっとみる
     .appBanner
       .appBanner__inner
         %h2.appBanner__inner__title
