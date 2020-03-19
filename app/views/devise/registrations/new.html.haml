@@ -23,7 +23,7 @@
       %span.form-require 必須
       %span.form-require3 半角
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "pc・携帯どちらも可"
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
     .field
       = f.label :password
       %span.form-require 必須
@@ -35,8 +35,10 @@
       = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の英数字"
     .field
       = f.label :password_confirmation
+      %span.form-require 必須
+      %span.form-require3 半角
       %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password"
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "上記と同じパスワードを入力してください"
     %p -------------------------------------------------------------
     %p
       %br/

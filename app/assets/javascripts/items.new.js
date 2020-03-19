@@ -58,3 +58,6 @@ $(document).on('turbolinks:load', ()=> {
    if ($('.abc').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 });
+
+
+

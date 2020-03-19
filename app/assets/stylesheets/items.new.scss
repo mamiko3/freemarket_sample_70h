@@ -7,6 +7,16 @@
   padding: 0;
 }
 
+img.furima-logo {
+  width: 15%;
+}
+
+img.footer-logo {
+  width: 15%;
+}
+
+
+
 .new{
 
   &__content{
@@ -23,7 +33,7 @@
        width: 100%;
        text-align: center;
        margin: auto 0;
-       margin-top: 30px;
+       margin-top: 10px;
      }
 
 
@@ -131,7 +141,7 @@
         }
         &__categories{
           border-bottom: 1px solid rgb(231, 229, 229);
-          height: 500px;
+          height: 600px;
           width: 100%;
           font-size: 14px;
           margin: auto;
@@ -210,7 +220,7 @@
                   width: 100%;
                   height: 20%;
                   margin-top: 10px;
-                    .contribution{
+                    .postage{
                       margin-top: 10px;
                       font-size: 20px;
                       width: 100%;
@@ -326,7 +336,7 @@
                       .submit{
                         margin-top: 20px;
                         display       : inline-block;
-                        border-radius : 5%;          
+                        border-radius : 5px;          
                         font-size     : 20px;        
                         text-align    : center;      
                         cursor        : pointer;     
@@ -345,7 +355,7 @@
                   justify-content: center;
                   .back{
                   display       : inline-block;
-                  border-radius : 5%;          
+                  border-radius : 5px;          
                   font-size     : 20px;        
                   text-align    : center;      
                   cursor        : pointer;     
@@ -403,6 +413,10 @@
           display: flex;
           justify-content: center;
           margin-top: 10px;
+          &__box {
+            display: flex;
+            justify-content: center;
+          }
         } 
         &__text{
         display: flex;
@@ -446,4 +460,15 @@
   }
 }
 
+.new__content__main__childrens__imges{
+  height: 450px;
+}
 
+
+
+.listing-select-wrapper__box--select {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 10px;
+}

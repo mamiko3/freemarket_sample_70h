@@ -7,8 +7,14 @@
 @import "font-awesome";
 @import "cards";
 @import "purchases";
+
+html{
+  height: 100vh;
+}
+
 body {
   margin: 0 auto;
+  height: 100%;
 }
 
 #header {
@@ -29,10 +35,15 @@ body {
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 30px;
-  border: 1px solid rgb(105, 200, 204);
+  border: 1px solid #3CCACE;
 }
 
 h2, #new_user.new_user {
+  text-align: center;
+  margin-top: 15px;
+}
+
+h2, #new_address.new_address {
   text-align: center;
   margin-top: 15px;
 }
@@ -96,10 +107,24 @@ ul{
   width: 300px;
   height: 50px;
   border: solid 1px;
-  background-color: rgb(105, 200, 204);
+  background-color: #3CCACE;
   font-size: medium;
-  color: #000;
+  color: #000000;
   margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.actions2 input{
+  width: 300px;
+  height: 50px;
+  border: solid 1px;
+  background-color: #3CCACE;
+  font-size: medium;
+  color: #000000;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
 }
 
 .field_def {
@@ -112,12 +137,14 @@ ul{
   &  a {
     display: block;;
     margin: 0 auto;
+    cursor: pointer;
   }
 }
 
 .bottom a{
   display: block;;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .footer_usr{
@@ -127,8 +154,16 @@ ul{
   margin: 0 auto;
 }
 
+.create_addresses_view{
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
 a {
   text-align: center;
+  cursor: pointer;
 
 }
 

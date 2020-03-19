@@ -1,4 +1,5 @@
-%h2 Forgot your password?
+%br/
+%h2 パスワード再設定
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
@@ -6,5 +7,19 @@
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+    = f.submit "パスワード再設定メールを送る"
+    -# = f.submit "Send me reset password instructions"
+-# = render "devise/shared/links"
+
+
+.bottom
+  -# = render "devise/shared/links"
+  %br/
+  = link_to "FURIMAトップページに戻る", root_path
+  %br/
+  %br/
+  %br/
+  %br/
+  %br/
+  -# = link_to "ログアウト", destroy_user_session_path, method: :delete
+  =render 'layouts/footer_usr'

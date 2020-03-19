@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.includes(:images).order("created_at DESC").limit(3)
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def show
@@ -11,19 +12,38 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @prefectures=Prefecture.all
+    #セレクトボックスの初期値設定
+    @category_parent_array = ["選択してください"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
+
+
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
 
   def create
     @prefectures=Prefecture.all
+
     @item = Item.new(item_params)
-
-
+    
     if @item.save
        redirect_to   root_path
-     else
+    else
        render "new"
-     end
-
+    end
   end
 
   def edit
