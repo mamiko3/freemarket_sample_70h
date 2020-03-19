@@ -1,0 +1,140 @@
+.edit
+  .edit__content
+    .edit__content__header
+      = render'layouts/header'
+    .edit__content__main
+      .edit__content__main__childrens
+      = form_with(model: @item, local: true)do |f|
+        .edit__content__main__childrens__imges
+          .edit__content__main__childrens__imges__box
+            出品画像 
+            %strong 必須
+            %br/
+            最大１０枚までアップロード可能
+            #image-box
+              #previews
+                -if @item.persisted?
+                  - @image.each_with_index do |image, i|
+                    .preview{data:{index:i}}
+                      =image_tag image.image.url,data:{index:i}, class: "js-file_group" ,width:"100px",height:'100px'
+                    
+                      %a{ class: "js-remove" }削除
+                      
+                      %a{ class: "abc"}
+
+              #form-wrapper
+                %label.icons
+                  = icon( 'fas',"fas fa-camera", class: "icon")
+                  %p.text
+                    ドラッグアンドドロップ
+                    %br/
+                    またはクリックしてファイルをアップロード
+                    
+                = f.fields_for :images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image,type: "file" ,class:"abc",value:"textarea"
+
+                    - if @item.persisted?
+                      =image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
+                  - if @item.persisted?
+                    .js-file_group{"data-index"=>"#{@item.images.count}"}
+                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'abc'
+                      .js-remove
+
+        .edit__content__main__childrens__items
+          .edit__content__main__childrens__items__box
+            .edit__content__main__childrens__items__box__box1
+              %p.item__text
+                商品名 必須
+              = f.text_field  :name,  placeholder: "40文字まで"
+
+            .edit__content__main__childrens__items__box__box2
+              %p.item__text
+                商品の説明 必須
+              = f.text_area :explain,class:"textarea"
+
+        .edit__content__main__childrens__categories
+          .edit__content__main__childrens__categories__box
+            .edit__content__main__childrens__categories__box__box1
+              商品の詳細
+            .edit__content__main__childrens__categories__box__box2
+              カテゴリー 必須
+              %br/
+              %select#categorie{name: "categories",class:"categorie"}        
+                %option{value:  "categorie1"} レディース
+                %option{value: "categorie2"} メンズ
+                %option{value: "categorie3"} 日用品
+                %option{value: "categorie4"} インテリア
+                %option{value: "categorie5"} その他
+              %br/
+
+              %select#categorie_2{name:  "categories_2",class:"categorie_2"}        
+                %option{value: "categorie_11"} tシャツ
+                %option{value: "categorie_22"} ブラウス
+                %option{value: "categorie_33"} キャミソール
+                %option{value: "categorie_44"} タンクトップ
+                %option{value:"categorie_55"} その他
+              %br/
+            .edit__content__main__childrens__categories__box__box3
+              ブランド
+              %br/
+              = f.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
+            .edit__content__main__childrens__categories__box__box4
+              商品の状態 必須
+              %br/
+              = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
+              .js-remove
+
+
+        .edit__content__main__childrens__deliverys
+          .edit__content__main__childrens__deliverys__box
+            .edit__content__main__childrens__deliverys__box__box1
+              配送について
+            .edit__content__main__childrens__deliverys__box__box2
+              配送料の負担 必須
+              %br/
+              = f.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
+
+            .edit__content__main__childrens__deliverys__box__box3
+              配送の日数
+              %br/
+              = f.select(:shipping, [["１〜２日で発送", "１〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
+            .edit__content__main__childrens__deliverys__box__box4
+              配送の地域 必須
+              %br/
+              = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
+            
+        .edit__content__main__childrens__sale
+          .edit__content__main__childrens__sale__box
+            価格 (¥300~9,999,999)
+            .edit__content__main__childrens__sale__box__box1
+              .flex
+                %p.left
+                  販売価格 必須
+                %p.rigth
+                  ¥
+              =f.number_field :price, placeholder: "", type: "number",class:"price"
+              
+            .edit__content__main__childrens__sale__box__box2
+              %p.left
+                販売手数料 (10%)
+              %p.rigth
+                ー
+            .edit__content__main__childrens__sale__box__box3
+              .edit__content__main__childrens__sale__box__box3__top
+                %p.left
+                  販売利益
+                %p.rigth
+                  ー
+              .edit__content__main__childrens__sale__box__box3__middle
+                .edit__content__main__childrens__sale__box__box3__middle__buttn1
+                  =f.submit name: "submit", class:"submit", value: "更新"
+                .edit__content__main__childrens__sale__box__box3__middle__buttn2 
+                  = link_to "商品削除", item_path(@item),method: :delete ,class: "back" 
+              .edit__content__main__childrens__sale__box__box3__bottom
+                %p
+                  禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+    .edit__content__footer
+      = render'layouts/footer_usr'
+      

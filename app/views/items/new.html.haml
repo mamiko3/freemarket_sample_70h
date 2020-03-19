@@ -2,11 +2,10 @@
   .new__content
     .new__content__header
       .new__content__header__text
-        =link_to image_tag(src="logo.png", size:'190x70'),root_path
 
     .new__content__main
       .new__content__main__childrens
-      = form_with(model: @item)do |form|
+      = form_with(model: @item, local: true)do |f|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
             出品アイテム
@@ -16,6 +15,7 @@
             #image-box
               #previews
                 -if @item.persisted?
+
                   =@item.images.each_with_index do |image, i|
                     =image_tag image.src.url,data:{index:i},width:"100",height:'100'
               = form.fields_for :images do |t|
@@ -31,13 +31,13 @@
                       ファイル形式：JPEG,PNG,GIF
                   .js-file_group{"data-index" => "#{t.index}"}
                     = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+
                     - if @item.persisted?
-                      =image.check_box :destroy,data:{index:t.index},class:"hidden-destroy"
+                      =image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
                   - if @item.persisted?
                     .js-file_group{"data-index"=>"#{@item.images.count}"}
-                      = file_field_tag :image, name: "item[images_attributes][#{@t.images.count}][:image]", class: 'abc'
-                      .js-remove 削除
-
+                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][:image]", class: 'abc'
+                      .js-remove
 
         .new__content__main__childrens__items
           .new__content__main__childrens__items__box
@@ -46,7 +46,9 @@
               商品名 
               %span.form-require 必須
               %br/
-              = form.text_field  :name, placeholder: "40文字まで", type: "text"
+
+              = f.text_field  :name,  placeholder: "40文字まで", type: "text"
+
                 
               %br/
               %br/
@@ -55,8 +57,11 @@
             .new__content__main__childrens__items__box__box2
               %p.item__text
                 商品の説明
-                %span.form-require 必須
-              = form.text_area :explain,class:"textarea", placeholder: "入力してください"
+
+                %span
+                  必須
+              = f.text_area :explain,class:"textarea"
+
               %br/
               %br/
               -# 入力してください
@@ -70,21 +75,21 @@
             .new__content__main__childrens__categories__box__box2
 
               .listing-product-detail__category
-                = form.label 'カテゴリー', class: 'category-label'
+                = f.label 'カテゴリー', class: 'category-label'
                 %span.listing-default--require 必須
                 .listing-select-wrapper__box
-                  = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
 
             .new__content__main__childrens__categories__box__box3
               ブランド
               %br/
-              = form.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
+              = f.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
             .new__content__main__childrens__categories__box__box4
               商品の状態
               %span.form-require 必須
               %br/
-              = form.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["やや目立った傷や汚れあり","やや目立った傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
+              = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
               
 
         .new__content__main__childrens__deliverys
@@ -96,19 +101,19 @@
               %span.form-require 必須
               %br/
 
-              = form.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
+              = f.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
 
             .new__content__main__childrens__deliverys__box__box3
               配送の日数
               %span.form-require 必須
               %br/
-              = form.select(:shipping, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
+              = f.select(:shipping, [["１〜２日で発送", "１〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
             .new__content__main__childrens__deliverys__box__box4
               配送の地域 
               %span.form-require 必須
               -# 必須
               %br/
-              = form.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
+              = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
@@ -124,30 +129,31 @@
                   入力してください
                 %p.rigth
                   ¥
-              =form.number_field :price, placeholder: "", type: "number",class:"price"
 
-
-            .new__content__main__childrens__sale__box__box3__middle
-              .new__content__main__childrens__sale__box__box3__middle__buttn1
-                =form.submit name: "submit", class:"submit", value: "送信"
-              .new__content__main__childrens__sale__box__box3__middle__buttn2 
-                = link_to("戻る","#" ,class: "back") 
-            .new__content__main__childrens__sale__box__box3__bottom
-              %p
-                禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-
+                
               
-            -# .new__content__main__childrens__sale__box__box2
-            -#   %p.left
-            -#     販売手数料 (10%)
-            -#   %p.rigth
-            -#     ー
-            -# .new__content__main__childrens__sale__box__box3
-            -#   .new__content__main__childrens__sale__box__box3__top
-            -#     %p.left
-            -#       販売利益
-            -#     %p.rigth
-            -#       ー
+              =f.number_field :price, placeholder: "", type: "number",class:"price"
+              
+            .new__content__main__childrens__sale__box__box2
+              %p.left
+                販売手数料 (10%)
+              %p.rigth
+                ー
+            .new__content__main__childrens__sale__box__box3
+              .new__content__main__childrens__sale__box__box3__top
+                %p.left
+                  販売利益
+                %p.rigth
+                  ー
+              .new__content__main__childrens__sale__box__box3__middle
+                .new__content__main__childrens__sale__box__box3__middle__buttn1
+                  =f.submit name: "submit", class:"submit", value: "送信"
+                .new__content__main__childrens__sale__box__box3__middle__buttn2 
+                  = link_to("戻る","#" ,class: "back") 
+              .new__content__main__childrens__sale__box__box3__bottom
+                %p
+                  禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
 
     .new__content__footer
       .new__content__footer__list
@@ -164,8 +170,3 @@
           =link_to image_tag(src="logo.png", size:'140x41'),root_path
 
 
-      -# .new__content__footer__text
-      -#   .new__content__footer__text__box
-      -#   %br/
-      -#   %p
-      -#     ＠FURIMA,inc.
