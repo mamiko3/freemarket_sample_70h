@@ -33,29 +33,31 @@
                 %ul
                   %li
                     - @item.images.each do |image|
+
                       = image_tag image.image.url, size: '300x300'
-                    %ul
-                      %li
-                        =image_tag src="icon-02.png"
-                      %li
-                        =image_tag src="icon-03.png"
-                      %li
-                        =image_tag src="icon-04.png"
+
+
               .main__showMain__contentRight__top-content__itemBox__price
                 %span
-                  20000
+                  =@item.price
                 .main__showMain__contentRight__top-content__itemBox__price__price-Detail
                   %span
-                    (税込)
-                  %span
-                    (送料込み)
+                    商品説明
+                    %br/
+                  %p
+                    = @item.explain
+                -# .main__showMain__contentRight__top-content__itemBox__price__price-Detail
+                -#   %span
+                -#     = @item.explain
+                    -# (送料込み)
               .main__showMain__contentRight__top-content__itemBox__table
                 
                 %table
                   %tbody
                     %tr
                       %th 出品者
-                      %td 雨音はよく寝れる
+                      %td 
+                        =@item.user.nickname
                     %tr 
                       %th カテゴリー
                       %td
@@ -72,53 +74,66 @@
                       %td
                     %tr 
                       %th 商品の状態
-                      %td 新品/未使用
+                      %td 
+                        =@item.condition
+                      -# 新品/未使用
                     %tr
                       %th 配送料の負担
-                      %td 着払い(購入者負担)
+                      %td 
+                        =@item.postage  # ここのデータの保存方法確認お願いします。
+                        -# 着払い(購入者負担)
                     %tr
                       %th 配送元の地域
-                      %td 千葉県野田市光葉町
+                      %td 
+                        =@item.region
+                        -# 千葉県野田市光葉町
                     %tr
                       %th 発送日の目安
-                      %td そのうち
+                      %td 
+                        =@item.shipping
+                        -# そのうち
               -  if user_signed_in? && current_user.id == @item.user_id  
-                %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
+                = link_to "/items/#{params[:id]}/edit",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
+                  %p 編集画面に進む
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
               -else
-                %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}購入画面に進む
-              .main__showMain__contentRight__top-content__itemBox__item-Detail
-                最近口内炎ができてめちゃ痛いです。
-              .main__showMain__contentRight__top-content__itemBox__optionalArea
-                %ul
-                  %li.optionalBtnlikeBtn
-                    お気に入り
-                %ul.main__showMain__contentRight__top-content__itemBox__optionalArea__optional
-                  %li.main__showMain__contentRight__top-content__itemBox__optionalArea__optional__optionalBtn
-                    =link_to"不適切な商品の通報",href:"#"
-            .main__showMain__contentRight__top-content__commentBox
-              %ul.main__showMain__contentRight__top-content__commentBox__commentContents
-                = form_with class:"new_comment",method:"#",local: true do |f|
-                  %textarea{required:"required", placeholder: "コメントする", rows: "2"}
-                %p.main__showMain__contentRight__top-content__commentBox__noticeMsg
-                  相手のことを考え丁寧なコメントを心がけよう。
-                  %br
-                  不快な言葉使いなどは利用制限や退会処分となることがあります。
-                %button{type:"submit",class:"comment"}
-                  コメントする
-          %ul.main__showMain__contentRight__links
-            %li
-              %a{href:'#'}
-                = icon('fa','angle-left')
-                %span
-                  前の商品
-            %l.last-child
-              %a{href:'#'}
-                %span 
-                  後ろの商品
-                = icon('fa','angle-right')
-          .main__showMain__contentRight__relatedItems
-            %a{ href: '#'}
-              メンズをもっとみる
+                = link_to "/items/#{params[:id]}/purchases/index",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
+                  %p 購入画面に進む
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href: "#"}購入画面に進む
+              -# .main__showMain__contentRight__top-content__itemBox__item-Detail
+              -#   = @item.explain
+                -# 最近口内炎ができてめちゃ痛いです。
+          -#     .main__showMain__contentRight__top-content__itemBox__optionalArea
+          -#       %ul
+          -#         %li.optionalBtnlikeBtn
+          -#           お気に入り
+          -#       %ul.main__showMain__contentRight__top-content__itemBox__optionalArea__optional
+          -#         %li.main__showMain__contentRight__top-content__itemBox__optionalArea__optional__optionalBtn
+          -#           =link_to"不適切な商品の通報",href:"#"
+          -#   .main__showMain__contentRight__top-content__commentBox
+          -#     %ul.main__showMain__contentRight__top-content__commentBox__commentContents
+          -#       = form_with class:"new_comment",method:"#",local: true do |f|
+          -#         %textarea{required:"required", placeholder: "コメントする", rows: "2"}
+          -#       %p.main__showMain__contentRight__top-content__commentBox__noticeMsg
+          -#         相手のことを考え丁寧なコメントを心がけよう。
+          -#         %br
+          -#         不快な言葉使いなどは利用制限や退会処分となることがあります。
+          -#       %button{type:"submit",class:"comment"}
+          -#         コメントする
+          -# %ul.main__showMain__contentRight__links
+          -#   %li
+          -#     %a{href:'#'}
+          -#       = icon('fa','angle-left')
+          -#       %span
+          -#         前の商品
+          -#   %l.last-child
+          -#     %a{href:'#'}
+          -#       %span 
+          -#         後ろの商品
+          -#       = icon('fa','angle-right')
+          -# .main__showMain__contentRight__relatedItems
+          -#   %a{ href: '#'}
+          -#     メンズをもっとみる
     .appBanner
       .appBanner__inner
         %h2.appBanner__inner__title
@@ -127,4 +142,4 @@
           今すぐ無料ダウンロード
         .appBanner__inner__icon
 
-=render"layouts/footer"
+=render"layouts/footer_usr"

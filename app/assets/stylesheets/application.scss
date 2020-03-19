@@ -1,13 +1,20 @@
 @import "items.show";
 @import "items.new";
 @import "items.index";
+@import "items.edit";
 @import "users";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "cards";
 @import "purchases";
+
+html{
+  height: 100vh;
+}
+
 body {
   margin: 0 auto;
+  height: 100%;
 }
 
 #header {

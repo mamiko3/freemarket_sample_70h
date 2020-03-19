@@ -1,23 +1,10 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-img.furima-logo {
-  width: 15%;
-}
-
-img.footer-logo {
-  width: 15%;
-}
-
-
-
-.new{
+.edit{
 
   &__content{
     display: flex;
@@ -33,7 +20,7 @@ img.footer-logo {
        width: 100%;
        text-align: center;
        margin: auto 0;
-       margin-top: 10px;
+       margin-top: 30px;
      }
 
 
@@ -47,6 +34,10 @@ img.footer-logo {
       background-color: white;
       height: 100vh;
       margin: 0 auto;
+      .preview{
+        width: 120px;
+
+      }
       &__childrens{
         display: flex;
         justify-content: center;
@@ -60,7 +51,6 @@ img.footer-logo {
           &__box{
             height: 100%;
             width: 100%;
-            font-size: 20px;
             .icons{
               align-content: center;
               -webkit-box-align: center;
@@ -70,9 +60,9 @@ img.footer-logo {
               display: flex;
               height: 65%;
                 width: 100%;
-                flex-wrap: wrap;
-                margin: 20px auto;
-                -webkit-box-pack: center;
+               flex-wrap: wrap;
+               margin: 20px auto;
+               -webkit-box-pack: center;
               justify-content: center;
                 position: relative;
                 border-width: 1px;
@@ -90,7 +80,8 @@ img.footer-logo {
                 font-size:1.5em;                 
               }
             }
-            
+           
+             
             .text{
               font-size: 12px;
               text-align: center;
@@ -106,12 +97,11 @@ img.footer-logo {
           padding: 40px;
           height: 400px;
           width: 100%;
-          font-size: 16px;
+          font-size: 14px;
           border-bottom: 1px solid rgb(231, 229, 229);
           &__box{
             height: 100%;
             width: 100%;
-            font-size: 20px;
             &__box1{
               height:50%;
               width:100%;
@@ -121,9 +111,9 @@ img.footer-logo {
                 width: 100%;
                 height: 20%;
                 border-radius: 10px;
-                font-size: 14px;
+                font-size: 15px;
               
-              }
+             }
             }
             
 
@@ -133,54 +123,51 @@ img.footer-logo {
             .textarea{
               margin-top: 10px;
               width: 100%;
-              height: 70%;
+              height: 40%;
               border-radius: 10px;
               padding: 10px;
-              resize: none;
-              font-size: 14px;
             }
           }
         }
         }
         &__categories{
           border-bottom: 1px solid rgb(231, 229, 229);
-          height: 600px;
+          height: 500px;
           width: 100%;
-          font-size: 16px;
+          font-size: 14px;
           margin: auto;
-          padding: 45px 45px 15px;
-          // padding-bottom:px ;
+          padding: 45px;
+          padding-bottom:px ;
           &__box{
               height: 100%;
               width: 100%;
               &__box1{
                 height: 10%;
                 width: 100%;
-                font-size: 20px;
               }
               &__box2{
-                height: 30%;
+                height: 40%;
                 width: 100%;
                 .categorie{
                   margin-top: 10px;
-                  font-size: 16px;
+                  font-size: 20px;
                   width: 100%;
-                  height: 40%;
+                  height: 20%;
                 }
-                // .categorie_1{
-                //   visibility: hidden;
-                //   margin-top: 10px;
-                //   font-size: 16px;
-                //   width: 100%;
-                //   height:20%;
-                // }
-                // .categorie_2{
-                //   display: none;
-                //   margin-top: 10px;
-                //   font-size: 20px;
-                //   width: 100%;
-                //   height: 20%;
-                // }
+                .categorie_1{
+                  visibility: hidden;
+                  margin-top: 10px;
+                  font-size: 20px;
+                  width: 100%;
+                  height:20%;
+                }
+                .categorie_2{
+                  display: none;
+                  margin-top: 10px;
+                  font-size: 20px;
+                  width: 100%;
+                  height: 20%;
+                }
               }
             &__box3{
                 height: 30%;
@@ -204,75 +191,70 @@ img.footer-logo {
                     height: 30%;
                   }
               }
-          }
+           }
         }
         &__deliverys{
-          height: 450px;
+          height: 500px;
           width: 100%;
           font-size: 14px;
           border-bottom: 1px solid rgb(231, 229, 229);
-          padding: 40px 40px 15px;
+          padding: 40px ;
           margin: auto;
             &__box{
               height: 100%;
               width: 100%;
-
                 &__box1{
                   width: 100%;
                   height: 10%;
-                  font-size: 20px;
                 }
                 &__box2{
                   width: 100%;
                   height: 20%;
                   margin-top: 10px;
-                  font-size: 16px;
-                    .postage{
+                    .contribution{
                       margin-top: 10px;
-                      font-size: 14px;
+                      font-size: 20px;
                       width: 100%;
                       height: 50%;
                     }
                 }
-                // &__box5{
-                //   width: 100%;
-                //   height: 20%;
-                //   display: none;
-                //   margin-top: 20px;
-                //     .date{
-                //       margin-top: 10px;
-                //       font-size: 20px;
-                //       width: 100%;
-                //       height: 50%;
-                //     }
-                // }
+                &__box5{
+                  width: 100%;
+                  height: 20%;
+                  display: none;
+                  margin-top: 20px;
+                    .date{
+                      margin-top: 10px;
+                      font-size: 20px;
+                      width: 100%;
+                      height: 50%;
+                    }
+                }
 
                 &__box3{
                   width: 100%;
                   height: 20%;
                   margin-top: 20px;
-                  font-size: 16px;
                     .delivery{
                       margin-top: 10px;
-                      font-size: 14px;
+                      font-size: 20px;
                       width: 100%;
                       height: 50%;
                     }
                 }
-                // &__box3{
-                //   width: 100%;
-                //   height: 20%;
-                //   margin-top: 20px;
-                // }
+                &__box3{
+                  width: 100%;
+                  height: 20%;
+                  margin-top: 20px;
+                }
 
                 &__box4{
                   width: 100%;
                   height: 20%;
                   margin-top: 20px;
-                  font-size: 16px;
                   .area{
                     margin-top: 10px;
-                    font-size: 14px;
+                    font-size: 20px;
                     width: 100%;
                     height: 50%;
                   }
@@ -281,7 +263,7 @@ img.footer-logo {
         }
 
         &__sale{
-          font-size: 20px;
+          font-size: 14px;
           height: 500px;
           width: 100%;
           margin: auto;
@@ -290,14 +272,13 @@ img.footer-logo {
             height: 100%;
             width: 100%;
                 &__box1{
-                  margin: 10px;
+                  margin-top: 10px;
                   display: flex;
                   height: 15%;
                   width: 100%;
                   .flex{
                     width: 50%;
                     height: 100%;
-                    font-size: 16px;
                     display: flex;
                     justify-content: space-between;
                     .rigth{
@@ -338,7 +319,7 @@ img.footer-logo {
                     }
                   }
                 &__middle{
-                  height: 40%;
+                  height: 60%;
                   width: 100%;
                   &__buttn1{
                     display: flex;
@@ -346,7 +327,7 @@ img.footer-logo {
                       .submit{
                         margin-top: 20px;
                         display       : inline-block;
-                        border-radius : 5px;          
+                        border-radius : 5%;          
                         font-size     : 20px;        
                         text-align    : center;      
                         cursor        : pointer;     
@@ -365,7 +346,7 @@ img.footer-logo {
                   justify-content: center;
                   .back{
                   display       : inline-block;
-                  border-radius : 5px;          
+                  border-radius : 5%;          
                   font-size     : 20px;        
                   text-align    : center;      
                   cursor        : pointer;     
@@ -412,7 +393,7 @@ img.footer-logo {
               list-style: none;
               li{
                 margin-left: 20px;
-                font-size: 14px;
+                font-size: 12px;
                 color: rgb(68, 65, 65);
               }
           }
@@ -423,10 +404,6 @@ img.footer-logo {
           display: flex;
           justify-content: center;
           margin-top: 10px;
-          &__box {
-            display: flex;
-            justify-content: center;
-          }
         } 
         &__text{
         display: flex;
@@ -470,15 +447,4 @@ img.footer-logo {
   }
 }
 
-.new__content__main__childrens__imges{
-  height: 450px;
-}
 
-
-
-.listing-select-wrapper__box--select {
-  width: 100%;
-  height: 40px;
-  font-size: 20px;
-  margin-top: 10px;
-}

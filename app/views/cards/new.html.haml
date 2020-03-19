@@ -1,21 +1,22 @@
 .card-register
   .register-area
     .register-area__box
-      = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
-      %h1.card クレジットカード情報入力
+      =link_to image_tag(src="logo.png", size:'150x50'),root_path
+      -# = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
+      %h2.card クレジットカード情報入力
       %hr
       = form_with url: pay_cards_path, method: :post, id: 'charge-form', html: {name: "inputForm"}, local: true do |form|
-        %h2.card カード番号
+        %h3.card カード番号
         = form.text_field :number, class: "num", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number"
         = image_tag "img_payment_01.jpg", alt: "カードロゴ", class: "card-logo"
         %br
-        %h2.card 有効期限
+        %h3.card 有効期限
         = form.select :exp_month, options_for_select([["--",""],["1","1"],["2","2"],["3","3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"],["10","10"],["11","11"],["12","12"]])
         %span 月/
         = form.select :exp_year, options_for_select([["--",""],["19","2019"],["20","2020"],["21","2021"],["22","2022"],["23","2023"],["24","2024"],["25","2025"],["26","2026"],["27","2027"],["28","2028"],["29","2029"]])
         %span 年
         %br
-        %h2.card セキュリティコード
+        %h3.card セキュリティコード
         = form.text_field :cvc, class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
         #card_token
           = form.submit "カードを登録する", id: "token_submit"
