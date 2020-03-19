@@ -6,7 +6,7 @@
 
     .new__content__main
       .new__content__main__childrens
-      = form_with(model: @item, local: true)do |form|
+      = form_with(model: @item)do |form|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
             出品アイテム
@@ -68,34 +68,14 @@
             .new__content__main__childrens__categories__box__box1
               商品の詳細
             .new__content__main__childrens__categories__box__box2
-              カテゴリー 
-              %span.form-require 必須
-              %select#categorie{name: "categories",class:"categorie"}
-                %option{value:  "categorie1"} 選択してください
-                %option{value: "categorie2"} レディース
-                %option{value: "categorie3"} メンズ
-                %option{value: "categorie4"} 日用品
-                %option{value: "categorie5"} インテリア
-                %option{value: "categorie6"} その他
-              %br/
 
-              -# =form.select :region,pleaceholder: "",class:"categorie"  
-              -# =form.select :condition,pleaceholder: "",class:"categorie_1" 
-              -# =form.select :shipping,pleaceholder: "",class:"categorie_1" 
-              -# %option{value: "categorie_11"} トップス
-              -# %option{value: "categorie_22"} ジャケットアウター
-              -# %option{value: "categorie_33"} パンツ
-              -# %option{value: "categorie_44"} スカート
-              -# %option{value: "categorie_55"} ワンピース
-              -# %br/
+              .listing-product-detail__category
+                = form.label 'カテゴリー', class: 'category-label'
+                %span.listing-default--require 必須
+                .listing-select-wrapper__box
+                  = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
-              -# %select#categorie_2{name:  "categories_2",class:"categorie_2"}        
-              -#   %option{value: "categorie_11"} Tシャツ
-              -#   %option{value: "categorie_22"} ブラウス
-              -#   %option{value: "categorie_33"} キャミソール
-              -#   %option{value: "categorie_44"} タンクトップ
-              -#   %option{value:"categorie_55"} その他
-              %br/
+
             .new__content__main__childrens__categories__box__box3
               ブランド
               %br/
@@ -115,16 +95,9 @@
               配送料の負担 
               %span.form-require 必須
               %br/
-              = form.select(:postage, [["送料込み（出品者負担）", "送料込み（出品者負担）"], ["着払い（購入者負担）", "着払い（購入者負担）"]], {prompt:"選択してください"}, {class: "postage"})
-            -# .new__content__main__childrens__deliverys__box__box5
-            -#   発送までの日数 必須
-            -#   = form.select(:shipping, [["未定", "未定"], ["ラクマフリマ便", "ラクマフリマ便"],["ゆうメール","ゆうメール"],["レターパック","レターパック"]], {prompt:"選択してください"}, {class: "date"})
-              -# = form.select(:shipping, [["未定", "未定"], ["ラクマフリマ便", "ラクマフリマ便"],["ゆうメール","ゆうメール"],["レターパック","レターパック"]], {prompt:"選択してください"}, {class: "date"})
-              -# %select#date{name: "date",class:"date"}        
-              -#   %option{value: "condition1"} 未定
-              -#   %option{value: "condition2"} ラクラクフリマ便
-              -#   %option{value: "condition3"} ゆうメール
-              -#   %option{value: "condition4"} レターパック
+
+              = form.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
+
             .new__content__main__childrens__deliverys__box__box3
               配送の日数
               %span.form-require 必須
