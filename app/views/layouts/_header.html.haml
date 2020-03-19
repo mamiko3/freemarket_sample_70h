@@ -4,9 +4,9 @@
       %h1.pcHeader__headerInner__mainHeader__icon
         = link_to image_tag(src="logo.png",size:"140x41"),root_path
       .pcHeader__headerInner__mainHeader__searchBox
-        = form_with method:"#",local: true do |f|
-          %input{class:"searchBox--input",name:"key",placeholder:"キーワードから探す"}
-          %button{type:"submit"}
+        = form_with url:  search_items_path,method: :get,local: true do |f|
+          =f.text_field :keyword, placeholder: "キーワードから探す",class:"searchBox--input"
+          = f.submit "検索", class: "search-btn" do
             .icon
               = image_tag src="icon-search 1.png",size:"19.14x19.14"
     .pcHeader__headerInner__nav

@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
     @prefectures=Prefecture.all
     @item = Item.new(item_params) # 出品完了画面を表示させるのでTOPへのリダイレクトはコメントアウトします
     @item.save
-    
   end
 
   def edit    
@@ -46,6 +45,12 @@ class ItemsController < ApplicationController
 
   def destroy
   end
+
+  def search
+    @items = Item.search(params[:keyword])
+    # binding.pry
+  end
+
 
   
   private

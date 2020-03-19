@@ -84,7 +84,8 @@
           = link_to '#', class: "productLink" do
             .productList
               %figure.productList__img
-                = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
+                = link_to item_path(item.id) do
+                  =image_tag item.images[0].image.url, size: '300x300' if item.images[0]
               .productList__body
                 .details
                   = item.name
