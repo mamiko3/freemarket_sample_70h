@@ -14,3 +14,17 @@
       = form_with url: delete_cards_path, method: :post, id: 'charge-form', html: {name: "inputForm"}, local: true do |form|
         = form.hidden_field value: "" 
         %button.delete 削除する
+
+-# 遷移できるか要確認
+.new__content__footer 
+  .new__content__footer__list
+    %ul
+      %li
+        %br/
+        =link_to "FURIMA トップへ戻る", root_path
+      %li
+        %br/
+        =link_to "マイページ", user_path(current_user)
+      %li
+        %br/
+        =link_to "登録カード情報を見る", card_path

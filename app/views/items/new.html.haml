@@ -9,10 +9,10 @@
       = form_with(model: @item, local: true)do |form|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
-            出品画像
+            出品アイテム
             %span.form-require 必須
-            %br/
-            最大10枚までアップロード可能
+            -# %br/
+            -# 最大10枚までアップロード可能
             #image-box
               #previews
                 -if @item.persisted?
@@ -23,9 +23,12 @@
                   %label.icons
                     = icon( 'fas',"fas fa-camera", class: "icon")
                     %p.text
-                      ドラッグアンドドロップ
+                      アルバムから画像を選択
                       %br/
-                      またはクリックしてファイルをアップロード
+                      【最大10枚までアップロード可能】
+                      %br/
+                      %br/
+                      ファイル形式：JPEG,PNG,GIF
                   .js-file_group{"data-index" => "#{t.index}"}
                     = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
                     - if @item.persisted?
@@ -43,20 +46,20 @@
               商品名 
               %span.form-require 必須
               %br/
-              = form.text_field  :name,  placeholder: "40文字まで", type: "text"
+              = form.text_field  :name, placeholder: "40文字まで", type: "text"
                 
               %br/
               %br/
-              %p.item__text-color
-              入力してください
+              -# %p.item__text-color
+              -# 入力してください
             .new__content__main__childrens__items__box__box2
               %p.item__text
                 商品の説明
                 %span.form-require 必須
-              = form.text_area :explain,class:"textarea"
+              = form.text_area :explain,class:"textarea", placeholder: "入力してください"
               %br/
               %br/
-              入力してください
+              -# 入力してください
               
 
           
@@ -136,37 +139,42 @@
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
-            価格 (¥300~9,999,999)
+            出品価格
             %span.form-require 必須
+            %span.form-require3 半角
             .new__content__main__childrens__sale__box__box1
               .flex
                 %p.left
-                  販売価格
+                  -# 販売価格
+                  ¥300-¥9,999,999 の範囲で
+                  %br/
+                  入力してください
                 %p.rigth
                   ¥
-                
-              
               =form.number_field :price, placeholder: "", type: "number",class:"price"
+
+
+            .new__content__main__childrens__sale__box__box3__middle
+              .new__content__main__childrens__sale__box__box3__middle__buttn1
+                =form.submit name: "submit", class:"submit", value: "送信"
+              .new__content__main__childrens__sale__box__box3__middle__buttn2 
+                = link_to("戻る","#" ,class: "back") 
+            .new__content__main__childrens__sale__box__box3__bottom
+              %p
+                禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
               
-            .new__content__main__childrens__sale__box__box2
-              %p.left
-                販売手数料 (10%)
-              %p.rigth
-                ー
-            .new__content__main__childrens__sale__box__box3
-              .new__content__main__childrens__sale__box__box3__top
-                %p.left
-                  販売利益
-                %p.rigth
-                  ー
-              .new__content__main__childrens__sale__box__box3__middle
-                .new__content__main__childrens__sale__box__box3__middle__buttn1
-                  =form.submit name: "submit", class:"submit", value: "送信"
-                .new__content__main__childrens__sale__box__box3__middle__buttn2 
-                  = link_to("戻る","#" ,class: "back") 
-              .new__content__main__childrens__sale__box__box3__bottom
-                %p
-                  禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+            -# .new__content__main__childrens__sale__box__box2
+            -#   %p.left
+            -#     販売手数料 (10%)
+            -#   %p.rigth
+            -#     ー
+            -# .new__content__main__childrens__sale__box__box3
+            -#   .new__content__main__childrens__sale__box__box3__top
+            -#     %p.left
+            -#       販売利益
+            -#     %p.rigth
+            -#       ー
 
     .new__content__footer
       .new__content__footer__list
