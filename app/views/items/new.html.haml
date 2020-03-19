@@ -18,7 +18,7 @@
 
                   =@item.images.each_with_index do |image, i|
                     =image_tag image.src.url,data:{index:i},width:"100",height:'100'
-              = form.fields_for :images do |t|
+              = f.fields_for :images do |t|
                 #form-wrapper
                   %label.icons
                     = icon( 'fas',"fas fa-camera", class: "icon")
