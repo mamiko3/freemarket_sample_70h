@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `
                 <div class="js-file_group" data-index="${num}">
                   <input type="file" class="abc" value="textarea" name="item[images_attributes][${num}][image]" id="item_images_attributes_${num}_image">
+  
                 </div>
                  `;
     return html;
@@ -20,11 +21,15 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   };
 
+  
+
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0,lastIndex);
   $('.hidden-destroy').hide();
+
  // file_fieldのnameに動的なindexをつける為の配列
+
   $('#image-box').on('change', '.abc', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る
     const targetIndex =$(this).parent().data('index');
@@ -42,9 +47,11 @@ $(document).on('turbolinks:load', ()=> {
 
   });
 
+  
+
   $('#image-box').on('click', '.js-remove', function() {
-   const targetIndex = $(this).parent().data('index')
-   const hiddenCheck = $(`input[data-index=${targetIndex}].hidden-destroy`);
+   const targetIndex = $(this).parent().data('index');
+   const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
    if (hiddenCheck) hiddenCheck.prop('checked', true);
    $(this).parent().remove();
    $(`img[data-index="${targetIndex}"]`).remove();

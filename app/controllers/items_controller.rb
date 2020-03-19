@@ -30,18 +30,18 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @image = @item.images
     @prefectures=Prefecture.all
-
+  
   end
 
   def update
     @item = Item.find(params[:id])
     @image = @item.images
     if @item.user_id == current_user.id
-
       @item.update(item_params)
       redirect_to root_path
     else
       render 'edit'
+
     end
   end
 

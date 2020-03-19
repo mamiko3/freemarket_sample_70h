@@ -14,12 +14,13 @@
             #image-box
               #previews
                 -if @item.persisted?
-                  - @item.images.each_with_index do |image, i|
-                    .preview
+                  - @image.each_with_index do |image, i|
+                    .preview{data:{index:i}}
                       =image_tag image.image.url,data:{index:i}, class: "js-file_group" ,width:"100px",height:'100px'
+                    
+                      %a{ class: "js-remove" }削除
                       
-                      %a{ class: "js-remove", "index": "#{image.id}" }削除
-                      %a{ class: "js-change"}編集
+                      %a{ class: "abc"}編集
 
               #form-wrapper
                 %label.icons
@@ -32,13 +33,14 @@
                 = f.fields_for :images do |image|
                   .js-file_group{"data-index" => "#{image.index}"}
                     = image.file_field :image,type: "file" ,class:"abc",value:"textarea"
-                    
+                    -# = image.file_field :image,type: "file" ,class:"js-remove",value:"textarea"
                     - if @item.persisted?
                       =image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
                   - if @item.persisted?
                     .js-file_group{"data-index"=>"#{@item.images.count}"}
-                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][:image]", class: 'abc'
-                      
+                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'abc'
+                      -# = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-remove'
+                      .js-remove
 
         .edit__content__main__childrens__items
           .edit__content__main__childrens__items__box
