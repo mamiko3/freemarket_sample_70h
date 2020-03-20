@@ -26,21 +26,19 @@ img.footer-logo {
     background-color: rgb(245, 243, 243);
     
     &__header{
-     height: 128px;
-     width: 100;
-     &__text{
-       height: 60px;
-       width: 100%;
-       text-align: center;
-       margin: auto 0;
-       margin-top: 10px;
-     }
-
-
+    height: 100px;
+    width: 100;
+    &__text{
+      height: 60px;
+      width: 100%;
+      text-align: center;
+      margin: auto 0;
+      margin-top: 30px;
+    }
 
     }
 
-     
+    
     &__main{
       overflow:scroll;
       width: 700px;
@@ -119,7 +117,7 @@ img.footer-logo {
                 padding: 20px;
                 margin-top: 10px;
                 width: 100%;
-                height: 20%;
+                height: 30%;
                 border-radius: 10px;
                 font-size: 14px;
               
@@ -149,7 +147,6 @@ img.footer-logo {
           font-size: 16px;
           margin: auto;
           padding: 45px 45px 15px;
-          // padding-bottom:px ;
           &__box{
               height: 100%;
               width: 100%;
@@ -163,35 +160,22 @@ img.footer-logo {
                 width: 100%;
                 .categorie{
                   margin-top: 10px;
-                  font-size: 16px;
+                  font-size: 14px;
                   width: 100%;
                   height: 40%;
                 }
-                // .categorie_1{
-                //   visibility: hidden;
-                //   margin-top: 10px;
-                //   font-size: 16px;
-                //   width: 100%;
-                //   height:20%;
-                // }
-                // .categorie_2{
-                //   display: none;
-                //   margin-top: 10px;
-                //   font-size: 20px;
-                //   width: 100%;
-                //   height: 20%;
-                // }
               }
             &__box3{
                 height: 30%;
                 width: 100%;
+                margin-top: 70px;
                   .brnd{
                     padding: 20px;
                     margin-top: 10px;
                     width: 100%;
-                    height: 20%;
+                    height: 40%;
                     border-radius: 10px;
-                    font-size: 15px;
+                    font-size: 14px;
                   }
               }
               &__box4{
@@ -199,7 +183,7 @@ img.footer-logo {
                 width: 100%;
                   .condition{
                     margin-top: 10px;
-                    font-size: 20px;
+                    font-size: 14px;
                     width: 100%;
                     height: 30%;
                   }
@@ -216,7 +200,6 @@ img.footer-logo {
             &__box{
               height: 100%;
               width: 100%;
-
                 &__box1{
                   width: 100%;
                   height: 10%;
@@ -224,57 +207,40 @@ img.footer-logo {
                 }
                 &__box2{
                   width: 100%;
-                  height: 20%;
+                  height: 30%;
                   margin-top: 10px;
                   font-size: 16px;
-                    .postage{
+                    .contribution{
                       margin-top: 10px;
                       font-size: 14px;
                       width: 100%;
-                      height: 50%;
+                      height: 40%;
                     }
                 }
-                // &__box5{
-                //   width: 100%;
-                //   height: 20%;
-                //   display: none;
-                //   margin-top: 20px;
-                //     .date{
-                //       margin-top: 10px;
-                //       font-size: 20px;
-                //       width: 100%;
-                //       height: 50%;
-                //     }
-                // }
 
                 &__box3{
                   width: 100%;
-                  height: 20%;
-                  margin-top: 20px;
+                  height: 30%;
+                  margin-top: 10px;
                   font-size: 16px;
                     .delivery{
                       margin-top: 10px;
                       font-size: 14px;
                       width: 100%;
-                      height: 50%;
+                      height: 40%;
                     }
                 }
-                // &__box3{
-                //   width: 100%;
-                //   height: 20%;
-                //   margin-top: 20px;
-                // }
 
                 &__box4{
                   width: 100%;
-                  height: 20%;
-                  margin-top: 20px;
+                  height: 30%;
+                  margin-top: 10px;
                   font-size: 16px;
                   .area{
                     margin-top: 10px;
                     font-size: 14px;
                     width: 100%;
-                    height: 50%;
+                    height: 40%;
                   }
                 }
             }
@@ -297,7 +263,7 @@ img.footer-logo {
                   .flex{
                     width: 50%;
                     height: 100%;
-                    font-size: 16px;
+                    font-size: 14px;
                     display: flex;
                     justify-content: space-between;
                     .rigth{
@@ -478,7 +444,12 @@ img.footer-logo {
 
 .listing-select-wrapper__box--select {
   width: 100%;
-  height: 40px;
-  font-size: 20px;
+  height: 50px;
+  font-size: 14px;
   margin-top: 10px;
 }
+
+// .listing-product-detail__category {
+//   width: 100%;
+//   height: 650px;
+// }
