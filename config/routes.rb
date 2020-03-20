@@ -13,29 +13,18 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
-
-
-  resources :items do
-  collection do
-    get 'search'
-   end
-  end
-
-  resources :images do
-    member do
-      get 'show_image'
-    end
-   
-  end
-
   resources :users, only: [:show]
-
+  
   resources :items, only: [:index,:show,:new,:create,:edit,:update,:destroy] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
-
+    
+    collection do
+      get 'search'
+    end
+    
     resources :purchases do
       collection do
         get 'index', to: 'purchases#index'
@@ -44,7 +33,7 @@ Rails.application.routes.draw do
       end
     end
   end  
-
+  
   resources :cards, only: [:new, :show] do
     collection do
       post 'show', to: 'cards#show'
@@ -53,5 +42,10 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :images do
+    member do
+      get 'show_image'
+    end
+  end
 end
 
