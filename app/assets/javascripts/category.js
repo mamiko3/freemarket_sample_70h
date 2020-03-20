@@ -9,8 +9,8 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
-                            <option value="---" data-category="---">選択してください</option>
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
+                            <option value="---" data-category="選択してください">選択してください</option>
                             ${insertHTML}
                           <select>
                         </div>
@@ -23,7 +23,7 @@ $(function(){
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
-                                  <option value="---" data-category="---">選択してください</option>
+                                  <option value="---" data-category="選択してください">選択してください</option>
                                   ${insertHTML}
                                 </select>
                               </div>
@@ -33,7 +33,7 @@ $(function(){
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
+    if (parentCategory != "選択してください"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -52,7 +52,7 @@ $(function(){
         appendChidrenBox(insertHTML);
       })
       .fail(function(){
-        alert('カテゴリー取得に失敗しました');
+        alert('ここのカテゴリー取得に失敗しました');
       })
     }else{
       $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
@@ -64,7 +64,7 @@ $(function(){
   // 子カテゴリー選択後のイベント
   $('.listing-product-detail__category').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
-    if (childId != "---"){ //子カテゴリーが初期値でないことを確認
+    if (childId != "選択してください"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
