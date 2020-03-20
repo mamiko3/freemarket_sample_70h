@@ -2,16 +2,17 @@
   .new__content
     .new__content__header
       .new__content__header__text
+        = link_to image_tag(src="logo.png",size:"140x41"),root_path
+
+        
 
     .new__content__main
       .new__content__main__childrens
       = form_with(model: @item, local: true)do |f|
         .new__content__main__childrens__imges
           .new__content__main__childrens__imges__box
-            出品アイテム
+            商品画像
             %span.form-require 必須
-            -# %br/
-            -# 最大10枚までアップロード可能
             #image-box
               #previews
                 -if @item.persisted?
@@ -48,35 +49,32 @@
               %br/
 
               = f.text_field  :name,  placeholder: "40文字まで", type: "text"
+          
+              %br/
+              %br/
 
-                
-              %br/
-              %br/
-              -# %p.item__text-color
-              -# 入力してください
             .new__content__main__childrens__items__box__box2
               %p.item__text
-                商品の説明
-
-                %span
-                  必須
-              = f.text_area :explain,class:"textarea"
-
-              %br/
-              %br/
-              -# 入力してください
-              
+              説明
+              %span.form-require 必須
+              = f.text_area :explain,class:"textarea",placeholder: "商品の説明（例：色、素材、定価、注意点など）を入力してください"
 
           
         .new__content__main__childrens__categories
           .new__content__main__childrens__categories__box
             .new__content__main__childrens__categories__box__box1
-              商品の詳細
+              商品詳細
+            
+            .new__content__main__childrens__categories__box__box4
+              商品の状態
+              %span.form-require 必須
+              %br/
+              = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["やや目立った傷や汚れがあり","やや目立った傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["ジャンク品","ジャンク品"]], {prompt:"選択してください"}, {class: "condition"})
+            
             .new__content__main__childrens__categories__box__box2
-
               .listing-product-detail__category
                 = f.label 'カテゴリー', class: 'category-label'
-                %span.listing-default--require 必須
+                %span.form-require 必須
                 .listing-select-wrapper__box
                   = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
@@ -85,11 +83,8 @@
               ブランド
               %br/
               = f.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
-            .new__content__main__childrens__categories__box__box4
-              商品の状態
-              %span.form-require 必須
-              %br/
-              = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["目立った傷や汚れがあり","目立った傷や汚れがあり"],["やや傷や汚れがあり","やや傷や汚れがあり"],["その他","その他"]], {prompt:"選択してください"}, {class: "condition"})
+
+
               
 
         .new__content__main__childrens__deliverys
@@ -100,59 +95,50 @@
               配送料の負担 
               %span.form-require 必須
               %br/
-
               = f.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
-
             .new__content__main__childrens__deliverys__box__box3
-              配送の日数
+              発送までの日数
               %span.form-require 必須
               %br/
-              = f.select(:shipping, [["１〜２日で発送", "１〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
+              = f.select(:shipping, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
             .new__content__main__childrens__deliverys__box__box4
-              配送の地域 
+              発送元の地域
               %span.form-require 必須
-              -# 必須
               %br/
               = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
-            出品価格
+            販売価格
             %span.form-require 必須
             %span.form-require3 半角
             .new__content__main__childrens__sale__box__box1
               .flex
                 %p.left
-                  -# 販売価格
-                  ¥300-¥9,999,999 の範囲で
-                  %br/
-                  入力してください
+                  (300〜9,999,999) 
                 %p.rigth
                   ¥
-
-                
-              
               =f.number_field :price, placeholder: "", type: "number",class:"price"
               
-            .new__content__main__childrens__sale__box__box2
-              %p.left
-                販売手数料 (10%)
-              %p.rigth
-                ー
-            .new__content__main__childrens__sale__box__box3
-              .new__content__main__childrens__sale__box__box3__top
-                %p.left
-                  販売利益
-                %p.rigth
-                  ー
-              .new__content__main__childrens__sale__box__box3__middle
-                .new__content__main__childrens__sale__box__box3__middle__buttn1
-                  =f.submit name: "submit", class:"submit", value: "送信"
-                .new__content__main__childrens__sale__box__box3__middle__buttn2 
-                  = link_to("戻る","#" ,class: "back") 
-              .new__content__main__childrens__sale__box__box3__bottom
-                %p
-                  禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+            -# .new__content__main__childrens__sale__box__box2
+            -#   %p.left
+            -#     販売手数料 (10%)
+            -#   %p.rigth
+            -#     ー
+            -# .new__content__main__childrens__sale__box__box3
+            -#   .new__content__main__childrens__sale__box__box3__top
+            -#     %p.left
+            -#       販売利益
+            -#     %p.rigth
+            -#       ー
+            .new__content__main__childrens__sale__box__box3__middle
+              .new__content__main__childrens__sale__box__box3__middle__buttn1
+                =f.submit name: "submit", class:"submit", value: "送信"
+              .new__content__main__childrens__sale__box__box3__middle__buttn2 
+                = link_to("戻る","#" ,class: "back") 
+            .new__content__main__childrens__sale__box__box3__bottom
+              %p
+                禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
 
     .new__content__footer

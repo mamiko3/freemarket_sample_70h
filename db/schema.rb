@@ -74,8 +74,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_115732) do
     t.datetime "updated_at", null: false
     t.integer "buyer_id"
     t.integer "user_id", null: false
-    t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -110,7 +108,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_115732) do
     t.string "day_birth_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+  
+  add_foreign_key "category_sizes", "categories"
+  add_foreign_key "category_sizes", "sizes"
+  add_foreign_key "items", "categories"
 
   add_foreign_key "items", "categories"
 end

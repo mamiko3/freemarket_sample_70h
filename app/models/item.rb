@@ -9,9 +9,15 @@ belongs_to :user
 
 accepts_nested_attributes_for :images,allow_destroy: true
 
-validates :name,:price,:explain,:postage,:region,:condition,:shipping,:category_id, presence: true
+
+validates :name,:price,:explain,:postage,:region,:category_id,:condition,:shipping, presence: true
 validates :name, length: { maximum: 40 }
 validates :name,length: {  maximum: 1000 }
 validates :price, presence: true, inclusion: 300..9999999
 
+
+def self.search(search)
+  return Item.all unless search
+  Item.where('name LIKE(?)', "%#{search}%")
+end
 end

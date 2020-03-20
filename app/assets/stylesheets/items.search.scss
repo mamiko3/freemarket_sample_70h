@@ -1,0 +1,50 @@
+.search{
+  overflow: scroll;
+  height:  100vh;
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(232, 228, 228);
+  padding-bottom: 30px;
+  padding: 50px 70px;
+  &__boxs{
+   height: 250px;
+   width: 180px;
+  background-color: white;
+   margin-top: 50px;
+   margin-bottom: 50px;
+   margin-left: 40px;
+   margin-right: 40px;
+   cursor: pointer;
+    &__image{
+      margin-top: 10px;
+      height: 200px;
+      width: 180px;
+      background-color:white;
+      margin:  auto;
+      // border: 1px solid ;
+      // position: absolute;
+      :hover{
+        background-color:ghostwhite;
+
+      }
+      
+    }
+    &__price{
+      
+      // position: relative;
+      bottom: 60px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+    &__name{
+      text-align: center;
+    }
+  }
+  .content{
+    text-align: center;
+    padding-top: 150px;
+    font-size: 30px;
+  }
+}

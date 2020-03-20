@@ -7,7 +7,8 @@ class PurchasesController < ApplicationController
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path
     else
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      # Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']#テスト環境で.envファイル呼ぶ時（本番環境対象外）
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(@card.customer_id) 
       #カード情報表示のためインスタンス変数に代入
@@ -16,7 +17,8 @@ class PurchasesController < ApplicationController
   end
 
   def pay
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    # Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']#テスト環境で.envファイル呼ぶ時（本番環境対象外）
     Payjp::Charge.create(
       :amount => @item.price, #支払金額を引っ張ってくる
       :customer => @card.customer_id,  #顧客ID

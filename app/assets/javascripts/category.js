@@ -9,7 +9,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
                             <option value="---" data-category="選択してください">選択してください</option>
                             ${insertHTML}
                           <select>
@@ -52,7 +52,7 @@ $(function(){
         appendChidrenBox(insertHTML);
       })
       .fail(function(){
-        alert('カテゴリー取得に失敗しました');
+        alert('ここのカテゴリー取得に失敗しました');
       })
     }else{
       $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
