@@ -5,7 +5,7 @@
         = link_to image_tag(src="logo.png",size:"140x41"),root_path
       .pcHeader__headerInner__mainHeader__searchBox
         = form_with url:  search_items_path,method: :get,local: true do |f|
-          =f.text_field :keyword, placeholder: "キーワードから探す",class:"searchBox--input"
+          =f.text_field :keyword, placeholder: "気になる商品を見つけよう",class:"searchBox--input"
           = f.submit "検索", class: "search-btn" do
             .icon
               = image_tag src="icon-search 1.png",size:"30x30"
@@ -14,11 +14,11 @@
       %ul.pcHeader__headerInner__nav__listsLeft
         %li.pcHeader__headerInner__nav__listsLeft__item--first
           
-        .pcHeader__headerInner__nav__listsLeft__treedisplayNone
-          %ul.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree
-            %li.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree__item
-        %li.pcHeader__headerInner__nav__listsLeft__item
-          ブランド
+        -# .pcHeader__headerInner__nav__listsLeft__treedisplayNone
+        -#   %ul.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree
+        -#     %li.pcHeader__headerInner__nav__listsLeft__treedisplayNone__categoryTree__item
+        -# %li.pcHeader__headerInner__nav__listsLeft__item
+        -#   ブランド
           .brandsPulldowndisplayNone
       %ul.pcHeader__headerInner__nav__listsRight
       - if user_signed_in?
