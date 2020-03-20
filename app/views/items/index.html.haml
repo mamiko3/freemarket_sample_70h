@@ -75,7 +75,7 @@
     %h2.head いろいろなアイテムが続々出品！
     .productBox
       .productHead
-        = link_to '#', class: "productLink" do 
+        = link_to '/', class: "productLink" do 
           %h3.title New Coming
       .productLists
         - @items.each do |item|
@@ -95,7 +95,7 @@
             .productList
               %figure.productList__img
                 = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
-              %p.productList__soldout 売り切れやで
+              %p.productList__soldout SoldOut
 
               .productList__body
                 .details
