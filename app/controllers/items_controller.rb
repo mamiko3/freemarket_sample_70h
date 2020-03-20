@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_items, only: [:show,:edit,:update,:destroy]
   def index
-    @items = Item.includes(:images).order("created_at DESC").limit(3)
+    @items = Item.includes(:images).order("created_at DESC").limit(10)
     @parents = Category.all.order("id ASC").limit(13)
   end
 
@@ -40,12 +40,12 @@ class ItemsController < ApplicationController
 
 
     @item = Item.new(item_params)
-    
-    if @item.save
-       redirect_to   root_path
-    else
-       render "new"
-    end
+    @item.save
+    # if @item.save
+    #   redirect_to   root_path
+    # else
+    #   render "new"
+    # end
   end
 
   def edit
@@ -82,7 +82,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_items

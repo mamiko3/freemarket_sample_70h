@@ -80,33 +80,23 @@
       .productLists
         - @items.each do |item|
 
-          -# - item.images.each do |image|
-            /#- if item.buyer_id.blank?
-          = link_to '#', class: "productLink" do
+          - if item.buyer_id.blank?
+            = link_to '#', class: "productLink" do
+              .productList
+                %figure.productList__img
+                  = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
+                .productList__body
+                  .details
+                    = item.name
+                  %p
+                    = "#{item.price}円"
+                  %p (税込)
+          - else
             .productList
               %figure.productList__img
-                = link_to item_path(item.id) do
-                  =image_tag item.images[0].image.url, size: '300x300' if item.images[0]
-              .productList__body
-                .details
-                  = item.name
-                %p
-                  = "#{item.price}円"
-                %p (税込)
-       
-  %section.pickupContainer
-    %h2.head ピックアップブランド
-    .productBox
-      .productHead
-        = link_to '#', class: "productLink" do
-          %h3.title アーカイバー
-      .productLists
-        - @items.each do |item|
-          /- if item.buyer_id.blank?
-          = link_to '#', class: "productLink" do
-            .productList
-              %figure.productList__img
-                = image_tag "", alt: "写真", class: "show-img"
+                = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
+              %p.productList__soldout 売り切れやで
+
               .productList__body
                 .details
                   = item.name
