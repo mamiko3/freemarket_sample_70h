@@ -1,14 +1,23 @@
--if @items.length != 0
-  -@items.each do |item|
-    .content.box
-      =link_to  "詳細へとぶ",item_path(item.id)
-      = item.name
-      = item.price
-      = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
--elsif @items.length == 0
+= render'layouts/header'
+.search
+  -if @items.length != 0
+    -@items.each do |item|
+      .search__boxs
+        .search__boxs__image
+          = link_to item_path(item.id) do
+            = image_tag item.images[0].image.url, size: '180x180' if item.images[0]
+        .search__boxs__price
+          ¥
+          = item.price
+          %p.text
+            (税込み)
+        .search__boxs__name
+          = item.name
+  -elsif @items.length == 0
+    .content
+      検索結果はありません
+  -else 
+    エラーが発生しました
+=render"layouts/footer_usr"
 
-  .content
-    検索結果はありません
--else
-  エラーが発生しました
 
