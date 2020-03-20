@@ -1,13 +1,26 @@
 
+.pcHeader
+  .pcHeader__headerInner
+    .pcHeader__headerInner__mainHeader
+      %h1.pcHeader__headerInner__mainHeader__icon
+        = link_to image_tag(src="logo.png",size:"140x41"),root_path
+
 .body
-#header
-  #{image_tag 'logo.png'}
-%h2 出品完了！
-%br/
-%h2 FURIMAを楽しんでくださいね。
+  %h2 出品完了！
+  %br/
+  %h2 FURIMAを楽しんでくださいね。
 
 
-= link_to "FURIMA トップへ戻る", root_path
-= link_to "続けて出品する", new_item_path
-= link_to "マイページ", root_path
+.new__content__footer
+  .new__content__footer__list
+    %ul
+      %li
+        %br/
+        =link_to "FURIMA トップへ戻る", root_path
+      %li
+        %br/
+        =link_to "続けて出品する", new_item_path
+      %li
+        %br/
+        =link_to "マイページ", root_path
 

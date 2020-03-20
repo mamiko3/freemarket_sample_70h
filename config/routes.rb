@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
+    sessions:      'users/sessions',
+    password:      'users/password',
   }
     devise_scope :user do
       get 'addresses', to: 'users/registrations#new_address'
@@ -12,11 +14,13 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
 
+
   resources :items do
   collection do
     get 'search'
    end
   end
+
   resources :images do
     member do
       get 'show_image'
@@ -26,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :items, only: [:index,:show,:new,:create,:edit,:destroy] do
+  resources :items, only: [:index,:show,:new,:create,:edit,:update,:destroy] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }

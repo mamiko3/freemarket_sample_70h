@@ -1,50 +1,77 @@
 class ItemsController < ApplicationController
+
+  before_action :set_items, only: [:show,:edit,:update,:destroy]
   def index
     @items = Item.includes(:images).order("created_at DESC").limit(3)
     @parents = Category.all.order("id ASC").limit(13)
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
     @item = Item.new
     @item.images.new
     @prefectures=Prefecture.all
-
-    @category_parent_array = ["---"]
+    #セレクトボックスの初期値設定
+    @category_parent_array = ["選択してください"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
   end
 
-  def category_children  
-    @category_children = Category.find_by(name: "#{params[:parent_name]}").children 
-  end
-  # Ajax通信で送られてきたデータをparamsで受け取り､childrenで子を取得
 
-  def category_grandchildren
-    @category_grandchildren = Category.find(name: "#{params[:child_id]}").children
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
-  # Ajax通信で送られてきたデータをparamsで受け取り､childrenで孫を取得｡（実際には子カテゴリーの子になる｡childrenは子を取得するメソッド)
 
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
 
 
   def create
     @prefectures=Prefecture.all
-    @item = Item.new(item_params) # 出品完了画面を表示させるのでTOPへのリダイレクトはコメントアウトします
-    @item.save
+
+
+    @item = Item.new(item_params)
+    
+    if @item.save
+       redirect_to   root_path
+    else
+       render "new"
+    end
   end
 
-  def edit    
+  def edit
+    @image = @item.images
+    @prefectures=Prefecture.all
+  
   end
 
   def update
+    @image = @item.images
+    @item.user_id == current_user.id
+    if @item.update(item_params)
+      redirect_to items_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
+
 
   def search
     @items = Item.search(params[:keyword])
@@ -52,10 +79,14 @@ class ItemsController < ApplicationController
 
 
   
-  private
 
+  private
   def item_params
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
   end
- 
+
+  def set_items
+    @item = Item.find(params[:id])
+  end
+
 end
