@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_104502) do
+ActiveRecord::Schema.define(version: 2020_03_19_053537) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "zip", null: false
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2020_03_18_104502) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "category_sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "size_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_sizes_on_category_id"
+    t.index ["size_id"], name: "index_category_sizes_on_size_id"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -88,6 +97,8 @@ ActiveRecord::Schema.define(version: 2020_03_18_104502) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_sizes_on_ancestry"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -112,4 +123,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_104502) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "category_sizes", "categories"
+  add_foreign_key "category_sizes", "sizes"
+  add_foreign_key "items", "categories"
 end

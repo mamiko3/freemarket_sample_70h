@@ -223,11 +223,11 @@ body {
 
 
 .productLists {
-  width: 780px;
+  width: 85%;
   margin: 0 auto;
   padding-bottom: 26px;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -243,7 +243,9 @@ body {
 .productList {
   width: 220px;
   display: inline-block;
-  float: left;
+  margin: 10px;
+  position: relative;
+  text-align: center;
   &__img {
     width: 220px;
     height: 150px;
@@ -257,6 +259,13 @@ body {
     color: #333;
     padding: 16px;
     font-size: 14px;
+  }
+  &__soldout {
+    color: white;
+    background-color: red;
+    width: 100%;
+    position: absolute;
+    top: 60px;
   }
 }
 
