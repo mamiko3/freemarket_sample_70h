@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @parents = Category.where(ancestry:nil)
   end
 
   def new
@@ -41,6 +42,7 @@ class ItemsController < ApplicationController
 
     @item = Item.new(item_params)
     @item.save
+
     # if @item.save
     #   redirect_to   root_path
     # else
@@ -51,8 +53,39 @@ class ItemsController < ApplicationController
   def edit
     @image = @item.images
     @prefectures=Prefecture.all
-  
-  end
+    @items = Category.where(ancestry:nil)
+    @category_parent_array = ["選択してください"]
+    @category_children_array = ["選択してください"]
+    @category_grandchildren_array = ["選択してください"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+      @category_children_array << parent.name
+      @category_grandchildren_array << parent.name
+      @parents = Category.all.order("id ASC").limit(13)
+    end
+#     # @parents = Category.all.order("id ASC").limit(13)
+#     @selected_grandchild_category = @item.category.name
+#     @category_grandchildren_array = [{id: "---", name: "---"}]
+#     Category.find("#{@selected_grandchild_category.name}").siblings.each do |grandchild|
+#       grandchildren_hash = {id: "#{grandchild.id}", name: "#{grandchild.name}"}
+#       @category_grandchildren_array << grandchildren_hash
+#   end
+#   @selected_child_category = @selected_grandchild_category.parent
+
+#   @category_children_array = [{id: "---", name: "---"}]
+#     Category.find("#{@selected_child_category.id}").siblings.each do |child|
+#       children_hash = {id: "#{child.id}", name: "#{child.name}"}
+#       @category_children_array << children_hash
+#   end
+#   @selected_parent_category = @selected_child_category.parent
+
+#   @category_parents_array = [{id: "---", name: "---"}]
+#   Category.find("#{@selected_parent_category.id}").siblings.each do |parent|
+#       parent_hash = {id: "#{parent.id}", name: "#{parent.name}"}
+#       @category_parents_array << parent_hash
+# end
+end
 
   def update
     @image = @item.images
@@ -82,7 +115,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
+
     params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
+
   end
 
   def set_items
