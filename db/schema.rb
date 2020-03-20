@@ -123,8 +123,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_053537) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "sizes"
-
+  add_foreign_key "items", "categories"
 end
