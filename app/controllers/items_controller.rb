@@ -38,6 +38,7 @@ class ItemsController < ApplicationController
   def create
     @prefectures=Prefecture.all
 
+
     @item = Item.new(item_params)
     @item.save
     # if @item.save
@@ -70,6 +71,14 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
+
+
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
+
+  
 
   private
   def item_params

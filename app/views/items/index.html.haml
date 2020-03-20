@@ -79,6 +79,7 @@
           %h3.title New Coming
       .productLists
         - @items.each do |item|
+
           - if item.buyer_id.blank?
             = link_to '#', class: "productLink" do
               .productList
@@ -95,6 +96,7 @@
               %figure.productList__img
                 = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
               %p.productList__soldout 売り切れやで
+
               .productList__body
                 .details
                   = item.name
