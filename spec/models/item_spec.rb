@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe Item do
   describe '#create' do
-  it "is valid with a name,price,explain,postage,region,condition,shipping"do
+  it "is valid with a name,price,explain,postage,region,condition,shipping,category_id"do
     expect(build(:item)).to be_valid
   end
   it "is invalid without a name" do
@@ -43,6 +43,13 @@ describe Item do
     item.valid?
     expect(item.errors[:shipping]).to include("を入力してください")
   end
+
+  it "is invalid without a category_id" do
+    item = build(:item ,category_id: nil)
+    item.valid?
+    expect(item.errors[:category_id]).to include("を入力してください")
+  end
+
   it "is valid with a name that has less than 40 characters " do
     item = build(:item, name: "aaaaaa")
     expect(item).to be_valid
@@ -62,4 +69,7 @@ describe Item do
   expect(item).to be_valid
 end
 end
+  describe '#edit' do
+    it "is valid with a name,explain,postage,category_id,condition,shipping,region"
+  end
 end
