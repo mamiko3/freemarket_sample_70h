@@ -116,7 +116,7 @@ end
   private
   def item_params
 
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,:brand,:size,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
 
   end
 
