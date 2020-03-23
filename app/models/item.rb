@@ -15,8 +15,8 @@ validates :name,length: {  maximum: 1000 }
 validates :price, presence: true, inclusion: 300..9999999
 
 
-def self.search(search)
-  return Item.all unless search
-  Item.where('name LIKE(?)', "%#{search}%")
-end
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
 end
