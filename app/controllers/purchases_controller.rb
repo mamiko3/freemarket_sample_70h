@@ -33,7 +33,11 @@ class PurchasesController < ApplicationController
 
   private
   def set_card
-    @card = Card.find_by(user_id: current_user.id)
+    if user_signed_in?
+      @card = Card.find_by(user_id: current_user.id)
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def set_item
@@ -45,6 +49,10 @@ class PurchasesController < ApplicationController
   end
 
   def set_address
-    @address = Address.find_by(user_id: current_user.id)
+    if user_signed_in?
+      @address = Address.find_by(user_id: current_user.id)
+    else
+      redirect_to new_user_registration_path
+    end
   end
 end

@@ -2,7 +2,6 @@
   .register-area
     .register-area__box
       =link_to image_tag(src="logo.png", size:'150x50'),root_path
-      -# = image_tag "logo.png", alt: "FURIMAロゴ", class: "furima-logo"
       %h2.card クレジットカード情報入力
       %hr
       = form_with url: pay_cards_path, method: :post, id: 'charge-form', html: {name: "inputForm"}, local: true do |form|
