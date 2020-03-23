@@ -30,7 +30,7 @@
                       %br/
                       ファイル形式：JPEG,PNG,GIF
                   .js-file_group{"data-index" => "#{t.index}"}
-                    = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                    = t.file_field :image,type: "file" ,class:"abc",value:"textarea",required: true
 
                     - if @item.persisted?
                       =image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
@@ -47,7 +47,7 @@
               %span.form-require 必須
               %br/
 
-              = f.text_field  :name,  placeholder: "40文字まで", type: "text"
+              = f.text_field  :name,  placeholder: "40文字まで", type: "text",required: true
           
               %br/
               %br/
@@ -56,7 +56,7 @@
               %p.item__text
               説明
               %span.form-require 必須
-              = f.text_area :explain,class:"textarea",placeholder: "商品の説明（例：色、素材、定価、注意点など）を入力してください"
+              = f.text_area :explain,class:"textarea",placeholder: "商品の説明（例：色、素材、定価、注意点など）を入力してください",required: true
 
           
         .new__content__main__childrens__categories
@@ -68,14 +68,14 @@
               商品の状態
               %span.form-require 必須
               %br/
-              = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["やや目立った傷や汚れがあり","やや目立った傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["ジャンク品","ジャンク品"]], {prompt:"選択してください"}, {class: "condition"})
+              = f.select(:condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],["やや目立った傷や汚れがあり","やや目立った傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["ジャンク品","ジャンク品"]], {prompt:"選択してください"}, {class: "condition",required: true})
             
             .new__content__main__childrens__categories__box__box2
               .listing-product-detail__category
-                = f.label 'カテゴリー', class: 'category-label'
+                = f.label 'カテゴリー', class: 'category-label',required: true
                 %span.form-require 必須
                 .listing-select-wrapper__box
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.select :category, Category.roots.pluck(:name), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category',required: true}
 
             .new__content__main__childrens__categories__box__box5
               サイズ
@@ -95,17 +95,17 @@
               配送料の負担 
               %span.form-require 必須
               %br/
-              = f.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution"})
+              = f.select(:postage, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt:"選択してください"}, {class: "contribution",required: true})
             .new__content__main__childrens__deliverys__box__box3
               発送までの日数
               %span.form-require 必須
               %br/
-              = f.select(:shipping, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery"})
+              = f.select(:shipping, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"],["4〜7日で発送","4〜7日で発送"]] ,{prompt:"選択してください"}, {class: "delivery",required: true})
             .new__content__main__childrens__deliverys__box__box4
               発送元の地域
               %span.form-require 必須
               %br/
-              = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
+              = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area",required: true} 
             
         .new__content__main__childrens__sale
           .new__content__main__childrens__sale__box
@@ -118,7 +118,7 @@
                   (300〜9,999,999) 
                 %p.rigth
                   ¥
-              =f.number_field :price, placeholder: "", type: "number",class:"price"
+              =f.number_field :price, placeholder: "", type: "number",class:"price",required: true
               
             -# .new__content__main__childrens__sale__box__box2
             -#   %p.left

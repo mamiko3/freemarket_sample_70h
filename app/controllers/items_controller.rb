@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @category_parent_array = ["選択してください"]
     #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
+      @category_parent_array = Category.roots.pluck(:name)
     end
   end
 
@@ -41,13 +41,12 @@ class ItemsController < ApplicationController
 
 
     @item = Item.new(item_params)
-    @item.save
+    # @item.save
 
-    # if @item.save
-    #   redirect_to   root_path
-    # else
-    #   render "new"
-    # end
+    if @item.save
+    else
+      render "new"
+    end
   end
 
   def edit
