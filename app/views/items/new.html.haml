@@ -4,7 +4,6 @@
       .new__content__header__text
         = link_to image_tag(src="logo.png",size:"140x41"),root_path
 
-        
 
     .new__content__main
       .new__content__main__childrens
@@ -78,14 +77,10 @@
                 .listing-select-wrapper__box
                   = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
-
             .new__content__main__childrens__categories__box__box3
               ブランド
               %br/
               = f.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
-
-
-              
 
         .new__content__main__childrens__deliverys
           .new__content__main__childrens__deliverys__box
@@ -135,7 +130,7 @@
               .new__content__main__childrens__sale__box__box3__middle__buttn1
                 =f.submit name: "submit", class:"submit", value: "送信"
               .new__content__main__childrens__sale__box__box3__middle__buttn2 
-                = link_to("戻る","#" ,class: "back") 
+                = link_to("戻る","/" ,class: "back") 
             .new__content__main__childrens__sale__box__box3__bottom
               %p
                 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

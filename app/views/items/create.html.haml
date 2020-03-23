@@ -8,7 +8,7 @@
 .body
   %h2 出品完了！
   %br/
-  %h2 FURIMAを楽しんでくださいね。
+  %h2 FURIMAをお楽しみください
 
 
 .new__content__footer
@@ -22,5 +22,5 @@
         =link_to "続けて出品する", new_item_path
       %li
         %br/
-        =link_to "マイページ", root_path
+        =link_to "マイページ", user_path(current_user)
 

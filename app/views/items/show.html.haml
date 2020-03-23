@@ -4,23 +4,26 @@
     .breadCrumbs
       %ul
         %li
-          =link_to"Furima",href:"#"
+          =link_to"FURIMA",href:"/"
         %li
           = icon('fa','angle-right')
         %li
-          =link_to"レディース",href:"#"
+          ="商品詳細"
         %li
           = icon('fa','angle-right')
-        %li
-          =link_to"トップス",href:"#"
-        %li
-          = icon('fa','angle-right')
-        %li
-          =link_to"Tシャツ/カットソー(半袖/袖なし)",href:"#"
-        %li
-          = icon('fa','angle-right')
-        %li
-          product1
+          = @item.name
+      -#   %li
+      -#     = icon('fa','angle-right')
+      -#   %li
+      -#     =link_to"トップス",href:"#"
+      -#   %li
+      -#     = icon('fa','angle-right')
+      -#   %li
+      -#     =link_to"Tシャツ/カットソー(半袖/袖なし)",href:"#"
+      -#   %li
+      -#     = icon('fa','angle-right')
+      -#   %li
+      -#     product1
     .main
       .main__showMain
         .main__showMain__contentLeftqq
@@ -70,9 +73,11 @@
                     %tr
                       %th ブランド
                       %td
+                        =@item.brand
                     %tr
                       %th 商品のサイズ
                       %td
+                        =@item.size
                     %tr 
                       %th 商品の状態
                       %td 
@@ -80,7 +85,7 @@
                     %tr
                       %th 配送料の負担
                       %td 
-                        =@item.postage  # ここのデータの保存方法確認お願いします。
+                        =@item.postage
                         
                     %tr
                       %th 配送元の地域
@@ -95,11 +100,11 @@
               -  if user_signed_in? && current_user.id == @item.user_id  
                 = link_to "/items/#{params[:id]}/edit",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
                   %p 編集画面に進む
-                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"#"}編集画面に進む
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"/"}編集画面に進む
               -else
                 = link_to "/items/#{params[:id]}/purchases/index",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
                   %p 購入画面に進む
-                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href: "#"}購入画面に進む
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href: "/"}購入画面に進む
               -# .main__showMain__contentRight__top-content__itemBox__item-Detail
               -#   = @item.explain
                 -# 最近口内炎ができてめちゃ痛いです。

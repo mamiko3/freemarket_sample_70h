@@ -1,17 +1,20 @@
 .edit
   .edit__content
     .edit__content__header
-      = render'layouts/header'
+      .edit__content__header__text
+        = link_to image_tag(src="logo.png",size:"140x41"),root_path
+
+
     .edit__content__main
       .edit__content__main__childrens
       = form_with(model: @item, local: true)do |f|
         .edit__content__main__childrens__imges
           .edit__content__main__childrens__imges__box
-            出品画像 
-            %strong 必須
-            %br/
-            最大１０枚までアップロード可能
+            商品画像
+            %span.form-require 必須
             #image-box
+
+
               #previews
                 -if @item.persisted?
                   - @image.each_with_index do |image, i|
@@ -26,9 +29,12 @@
                 %label.icons
                   = icon( 'fas',"fas fa-camera", class: "icon")
                   %p.text
-                    ドラッグアンドドロップ
+                    アルバムから画像を選択
                     %br/
-                    またはクリックしてファイルをアップロード
+                    【最大10枚までアップロード可能】
+                    %br/
+                    %br/
+                    ファイル形式：JPEG,PNG,GIF
                     
                 = f.fields_for :images do |image|
                   .js-file_group{"data-index" => "#{image.index}"}
@@ -151,7 +157,7 @@
                 .edit__content__main__childrens__sale__box__box3__middle__buttn1
                   = link_to "商品削除", item_path(@item),method: :delete ,class: "back" 
                 .edit__content__main__childrens__sale__box__box3__middle__buttn2 
-                  = link_to("戻る","#" ,class: "back") 
+                  = link_to("戻る","/" ,class: "back") 
               .edit__content__main__childrens__sale__box__box3__bottom
                 %p
                   禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
