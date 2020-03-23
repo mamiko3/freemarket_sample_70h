@@ -34,11 +34,11 @@
                 = @item.name
               .main__showMain__contentRight__top-content__itemBox__body
                 %ul
-                  %li.a
+                  %li.mainimage
                     =image_tag @item.images.first.image.url size: '300x300'
                     %ul
                       - @item.images.each do |image|
-                        %li
+                        %li.subimage_li
                           = image_tag image.image.url, size: '150x150'
                         
               .main__showMain__contentRight__top-content__itemBox__price

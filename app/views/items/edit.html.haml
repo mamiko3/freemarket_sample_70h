@@ -155,9 +155,9 @@
                   ー
               .edit__content__main__childrens__sale__box__box3__middle
                 .edit__content__main__childrens__sale__box__box3__middle__buttn1
-                  = link_to "商品削除", item_path(@item),method: :delete ,class: "back" 
+                  =f.submit name: "submit", class:"submit", value: "更新"
                 .edit__content__main__childrens__sale__box__box3__middle__buttn2 
-                  = link_to("戻る","/" ,class: "back") 
+                  = link_to "商品削除", item_path(@item),method: :delete ,class: "back" 
               .edit__content__main__childrens__sale__box__box3__bottom
                 %p
                   禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
