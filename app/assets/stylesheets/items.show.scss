@@ -166,6 +166,7 @@
           &__body{
             margin: 16px 0 0;
             ul{
+              flex-wrap: wrap;
               display: flex;
               position: relative;
               li{
