@@ -77,10 +77,15 @@
                 .listing-select-wrapper__box
                   = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
+            .new__content__main__childrens__categories__box__box5
+              サイズ
+              %br/
+              = f.text_field :size, placeholder:"", type: "text",class:"size"
+
             .new__content__main__childrens__categories__box__box3
               ブランド
               %br/
-              = f.text_field  :brand,name: "brnd", placeholder:"", type: "text",class:"brnd"
+              = f.text_field  :brand, placeholder:"", type: "text",class:"brnd"
 
         .new__content__main__childrens__deliverys
           .new__content__main__childrens__deliverys__box
