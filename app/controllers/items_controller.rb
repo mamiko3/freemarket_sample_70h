@@ -11,8 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    @item.images.new
+    if user_signed_in?
+      @item = Item.new
+      @item.images.new
+    else
+      redirect_to new_user_registration_path
+    end
     @prefectures=Prefecture.all
     #セレクトボックスの初期値設定
     @category_parent_array = ["選択してください"]
@@ -64,28 +68,7 @@ class ItemsController < ApplicationController
       @category_grandchildren_array << parent.name
       @parents = Category.all.order("id ASC").limit(13)
     end
-#     # @parents = Category.all.order("id ASC").limit(13)
-#     @selected_grandchild_category = @item.category.name
-#     @category_grandchildren_array = [{id: "---", name: "---"}]
-#     Category.find("#{@selected_grandchild_category.name}").siblings.each do |grandchild|
-#       grandchildren_hash = {id: "#{grandchild.id}", name: "#{grandchild.name}"}
-#       @category_grandchildren_array << grandchildren_hash
-#   end
-#   @selected_child_category = @selected_grandchild_category.parent
-
-#   @category_children_array = [{id: "---", name: "---"}]
-#     Category.find("#{@selected_child_category.id}").siblings.each do |child|
-#       children_hash = {id: "#{child.id}", name: "#{child.name}"}
-#       @category_children_array << children_hash
-#   end
-#   @selected_parent_category = @selected_child_category.parent
-
-#   @category_parents_array = [{id: "---", name: "---"}]
-#   Category.find("#{@selected_parent_category.id}").siblings.each do |parent|
-#       parent_hash = {id: "#{parent.id}", name: "#{parent.name}"}
-#       @category_parents_array << parent_hash
-# end
-end
+  end
 
   def update
     @image = @item.images
