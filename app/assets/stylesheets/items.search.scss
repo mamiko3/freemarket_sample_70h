@@ -15,7 +15,17 @@
    margin-bottom: 50px;
    margin-left: 40px;
    margin-right: 40px;
-   cursor: pointer;
+   position: relative;
+  //  cursor: pointer;{
+    span {
+      position: absolute;
+      top:60px;
+      color: white;
+      background-color: red;
+      width: 100%;
+      text-align: center;
+    }
+
     &__image{
       margin-top: 10px;
       height: 200px;

@@ -1,18 +1,33 @@
 = render'layouts/header'
 .search
   -if @items.length != 0
+
     -@items.each do |item|
-      .search__boxs
-        .search__boxs__image
-          = link_to item_path(item.id) do
+      - if item.buyer_id.blank?
+        .search__boxs
+          .search__boxs__image
+            = link_to item_path(item.id) do
+              = image_tag item.images[0].image.url, size: '180x180' if item.images[0]
+          .search__boxs__price
+            ¥
+            = item.price
+            %p.text
+              (税込み)
+          .search__boxs__name
+            = item.name
+      - else
+        .search__boxs
+          .search__boxs__image
             = image_tag item.images[0].image.url, size: '180x180' if item.images[0]
-        .search__boxs__price
-          ¥
-          = item.price
-          %p.text
-            (税込み)
-        .search__boxs__name
-          = item.name
+          %span.searchlist__soldout SoldOut
+          .search__boxs__price
+            ¥
+            = item.price
+            %p.text
+              (税込み)
+          .search__boxs__name
+            = item.name
+
   -elsif @items.length == 0
     .content
       検索結果はありません
