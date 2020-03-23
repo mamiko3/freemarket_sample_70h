@@ -155,7 +155,7 @@
                   ー
               .edit__content__main__childrens__sale__box__box3__middle
                 .edit__content__main__childrens__sale__box__box3__middle__buttn1
-                  =f.submit name: "submit", class:"submit", value: "送信"
+                  = link_to "商品削除", item_path(@item),method: :delete ,class: "back" 
                 .edit__content__main__childrens__sale__box__box3__middle__buttn2 
                   = link_to("戻る","/" ,class: "back") 
               .edit__content__main__childrens__sale__box__box3__bottom
