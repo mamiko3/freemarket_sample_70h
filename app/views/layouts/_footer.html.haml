@@ -34,11 +34,10 @@
     %a
       = link_to image_tag(src="logo-white.png",size:"160x46.34"),root_path
 
-  .purchasesBtn
+
+  %label.purchasesBtn
     %span.purchasesBtn__text
       出品する
-    %span.purchasesBtn__icon
-      = link_to image_tag(src="icon_camera.png",size:"54x54"),new_item_path
-  
 
-
+    %label.purchasesBtn__icon
+      = link_to image_tag(src="icon_camera.png",size:"54x54"),new_item_path, class:"purchasesBtn__icon--a"

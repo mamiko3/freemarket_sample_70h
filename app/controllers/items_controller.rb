@@ -13,14 +13,18 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    @item.images.new
+    if user_signed_in?
+      @item = Item.new
+      @item.images.new
+    else
+      redirect_to new_user_registration_path
+    end
     @prefectures=Prefecture.all
     #セレクトボックスの初期値設定
     @category_parent_array = ["選択してください"]
     #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
+      @category_parent_array = Category.roots.pluck(:name)
     end
   end
 
@@ -42,6 +46,7 @@ class ItemsController < ApplicationController
     @prefectures=Prefecture.all
     @item = Item.new(item_params)
     @item.save
+
   end
 
   def edit
@@ -63,7 +68,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-
+  
 
   def update
     @image = @item.images
@@ -90,7 +95,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,:brand,:size,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_items

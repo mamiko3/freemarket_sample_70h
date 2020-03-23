@@ -84,7 +84,7 @@
             = link_to "/items/#{item.id}", class: "productLink" do
               .productList
                 %figure.productList__img
-                  = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
+                  = image_tag item.images[0].image.url, size: '200x200' if item.images[0]
                 .productList__body
                   .details
                     = item.name
@@ -94,7 +94,7 @@
           - else
             .productList
               %figure.productList__img
-                = image_tag item.images[0].image.url, size: '300x300' if item.images[0]
+                = image_tag item.images[0].image.url, size: '200x200' if item.images[0]
               %p.productList__soldout SoldOut
 
               .productList__body
