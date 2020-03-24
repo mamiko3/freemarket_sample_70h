@@ -48,7 +48,7 @@ img.footer-logo {
         justify-content: center;
         flex-direction: column;
         &__imges{
-          height: 400px;
+          height: 100%;
           width: 100%;
           border-bottom: 1px solidrgb(231, 229, 229);
           margin: auto;
@@ -211,7 +211,7 @@ img.footer-logo {
                   height: 20%;
                   margin-top: 10px;
                   font-size: 16px;
-                    .postage{
+                    .contribution{
                       margin-top: 10px;
                       font-size: 14px;
                       width: 100%;
