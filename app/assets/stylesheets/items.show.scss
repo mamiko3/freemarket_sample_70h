@@ -168,7 +168,6 @@
             margin: 16px 0 0;
             .main{
               flex-wrap: wrap;
-              display: flex;
               position: relative;
               .mainimage{
                 display: flex;
@@ -188,9 +187,6 @@
                 justify-content: center;
                 margin-top: 10px;
                 flex-wrap: wrap;
-                li{
-                  display: flex;
-                }
               }
 
               
