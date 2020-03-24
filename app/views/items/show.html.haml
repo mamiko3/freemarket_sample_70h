@@ -24,11 +24,11 @@
               .main__showMain__contentRight__top-content__itemBox__body
                 %ul.main
                   %li.mainimage
-                    =image_tag @item.images.first.image.url size: '300x300',class:"mainimage"
+                    =image_tag @item.images.first.image.url size: '200x200',class:"mainimage"
                   .subimage
                     - @item.images.each do |image|
-                      .subimage_li
-                        = image_tag image.image.url, size: '150x150',class:"subimage"
+                      %li.subimage_li
+                        = image_tag image.image.url, size: '75x75',class:"subimage"
 
               .main__showMain__contentRight__top-content__itemBox__price
                 %span
