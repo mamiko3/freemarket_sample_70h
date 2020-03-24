@@ -87,7 +87,8 @@
                   =@item.category.parent.parent.name
                   =@item.category.parent.name
                   =@item.category.name
-                  = f.select :category, options_for_select(@category_parent_array.map{|c|[c, {'data-category'=>c}]}, @selected_parent_category), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                .listing-select-wrapper__box
+                  = f.select :category, Category.roots.pluck(:name), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
                   
             .edit__content__main__childrens__categories__box__box3
               ブランド
@@ -121,7 +122,7 @@
               %span.form-require 必須
               -# 必須
               %br/
-              = f.select :region, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
+              = f.select :region, options_for_select(Prefecture.all.map{|c|[c[:name], c[:name]]}), {prompt:"選択してください"}, {class: "area"} 
             
         .edit__content__main__childrens__sale
           .edit__content__main__childrens__sale__box

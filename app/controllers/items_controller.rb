@@ -15,11 +15,12 @@ class ItemsController < ApplicationController
     @item.images.new
     @prefectures=Prefecture.all
     #セレクトボックスの初期値設定
-    @category_parent_array = ["選択してください"]
+    # @category_parent_array = ["選択してください"]
     #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    # Category.where(ancestry: nil).each do |parent|
+    #   @category_parent_array << parent.name
+    @category_parent_array = Category.roots.pluck(:name)
+
   end
 
 
@@ -93,6 +94,7 @@ end
     if @item.update(item_params)
       redirect_to items_path
     else
+      flash[:alert] = '編集に失敗しました。必須項目を確認してください。'
       render 'edit'
     end
   end
@@ -109,9 +111,6 @@ end
   def search
     @items = Item.search(params[:keyword])
   end
-
-
-  
 
   private
   def item_params

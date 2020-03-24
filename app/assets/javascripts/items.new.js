@@ -58,7 +58,12 @@ $(function(){
    $(`img[data-index="${targetIndex}"]`).remove();
    if ($('.abc').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
+
 });
-
-
-
+  $(function(){
+  $('.subimage_li img').click(function(){
+  // マウスオーバーしている画像をメインの画像に反映
+  $('.mainimage img').attr('src', $(this).attr('src'));
+  
+  });
+});
