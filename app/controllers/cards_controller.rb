@@ -3,8 +3,12 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    if user_signed_in?
+      card = Card.where(user_id: current_user.id)
+      redirect_to action: "show" if card.exists?
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def pay #payjpとCardのデータベース作成を実施。
@@ -41,14 +45,18 @@ class CardsController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す。
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new" 
+    if user_signed_in?
+      card = Card.where(user_id: current_user.id).first
+      if card.blank?
+        redirect_to action: "new" 
+      else
+        # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]#テスト環境で.envファイル呼ぶ時（本番環境対象外）
+        Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @default_card_information = customer.cards.retrieve(card.card_id)
+      end
     else
-      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]#テスト環境で.envファイル呼ぶ時（本番環境対象外）
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      redirect_to new_user_registration_path
     end
   end
 end
