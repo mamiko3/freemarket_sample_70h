@@ -66,7 +66,7 @@
               %p.item__text
                 商品の説明
 
-                %span
+                %span.form-require
                   必須
               = f.text_area :explain,class:"textarea"
 
@@ -83,7 +83,7 @@
 
               .listing-product-detail__category
                 = f.label 'カテゴリー', class: 'category-label'
-                %span.listing-default--require 必須
+                %span.form-require 必須
                 .listing-select-wrapper__box
                   =@item.category.parent.parent.name
                   =@item.category.parent.name
