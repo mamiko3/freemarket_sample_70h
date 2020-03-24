@@ -90,12 +90,11 @@
                   =@item.category.name
                 .listing-select-wrapper__box
                   = f.select :category, Category.roots.pluck(:name), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-                  
+
             .edit__content__main__childrens__categories__box__box5
               サイズ
               %br/
-              = f.text_field :size, placeholder:"", type: "text",class:"size"
-
+              = f.text_field  :size,name: "size", placeholder:"", type: "text",class:"size"
 
             .edit__content__main__childrens__categories__box__box3
               ブランド
