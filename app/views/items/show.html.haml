@@ -22,14 +22,14 @@
               .main__showMain__contentRight__top-content__itemBox__name
                 = @item.name
               .main__showMain__contentRight__top-content__itemBox__body
-                %ul
+                %ul.main
                   %li.mainimage
-                    =image_tag @item.images.first.image.url size: '300x300'
-                    %ul
-                      - @item.images.each do |image|
-                        %li.subimage_li
-                          = image_tag image.image.url, size: '150x150'
-                        
+                    =image_tag @item.images.first.image.url size: '300x300',class:"mainimage"
+                  .subimage
+                    - @item.images.each do |image|
+                      %li.subimage_li
+                        = image_tag image.image.url, size: '150x150',class:"subimage"
+
               .main__showMain__contentRight__top-content__itemBox__price
                 %span
                   =@item.price
@@ -87,6 +87,10 @@
               -  if user_signed_in? && current_user.id == @item.user_id  
                 = link_to "/items/#{params[:id]}/edit",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
                   %p 編集画面に進む
+
+                
+                = link_to "商品削除", item_path(@item) ,class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",method: :delete 
+                -# %a{class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn",href:"/"}編集画面に進む
               -else
                 = link_to "/items/#{params[:id]}/purchases/index",class:"main__showMain__contentRight__top-content__itemBox__item-buy-btn" do
                   %p 購入画面に進む

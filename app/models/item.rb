@@ -8,6 +8,9 @@ belongs_to :user
 accepts_nested_attributes_for :images,allow_destroy: true
 
 
+
+validates :images, presence: true,length: {minmum: 1, maximum: 10}
+
 validates :name,:price,:explain,:postage,:region,:category_id,:condition,:shipping, presence: true
 validates :name, length: { maximum: 40 }
 validates :name,length: {  maximum: 1000 }
