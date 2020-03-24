@@ -27,7 +27,7 @@
                     =image_tag @item.images.first.image.url size: '300x300',class:"mainimage"
                   .subimage
                     - @item.images.each do |image|
-                      %li.subimage_li
+                      .subimage_li
                         = image_tag image.image.url, size: '150x150',class:"subimage"
 
               .main__showMain__contentRight__top-content__itemBox__price
