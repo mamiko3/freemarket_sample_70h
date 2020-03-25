@@ -62,4 +62,8 @@ describe Item do
   expect(item).to be_valid
 end
 end
+
+  describe '#update' do
+    it ""
+
 end
