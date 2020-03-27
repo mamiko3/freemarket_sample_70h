@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
       @category_children_array << parent.name
       @category_grandchildren_array << parent.name
       @parents = Category.all.order("id ASC").limit(13)
-    end
+  end
 #     # @parents = Category.all.order("id ASC").limit(13)
 #     @selected_grandchild_category = @item.category.name
 #     @category_grandchildren_array = [{id: "---", name: "---"}]
@@ -110,14 +110,9 @@ end
     @items = Item.search(params[:keyword])
   end
 
-
-  
-
   private
   def item_params
-
     params.require(:item).permit(:name, :price,:explain,:postage,:region,:condition,:category_id,:shipping,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
-
   end
 
   def set_items
