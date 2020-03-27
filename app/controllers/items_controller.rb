@@ -46,8 +46,11 @@ class ItemsController < ApplicationController
   def create
     @prefectures=Prefecture.all
     @item = Item.new(item_params)
-    @item.save
-
+    if @item.category_id != 0
+      @item.save
+    else
+      render new_item_path
+    end
   end
 
   def edit
